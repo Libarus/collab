@@ -1,0 +1,24 @@
+{
+  "name": "dz2",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Anton Zabelin <libarus@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "normalize-css": "normalize.css#^3.0.3",
+    "jquery-ui": "^1.11.4"
+  }
+}
