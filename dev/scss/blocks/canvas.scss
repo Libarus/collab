@@ -1,0 +1,26 @@
+.canvas-content {
+	float:left;
+	width: 700px;
+	height:670px;
+	padding: 15px 25px 20px 25px;
+	box-sizing: border-box;
+	background: url('../images/background-canvas-pt.jpg');
+	background-size: cover; 
+  &__header{
+		color: $white;
+		line-height: 46px;
+		font-size: 36px;
+		font-weight: normal;
+		margin: 0 0 50px 0;
+		max-width: 650px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-family: "SegoeUILight";
+  }  
+}
+.canvas-content__wrapper {
+  width: 650px;
+  height: 535px;
+  background: $white;
+  position: relative;
+}

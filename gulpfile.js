@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 var paths = {
     src: {
         dev:'dev/**/*.*',
-        jade:'dev/**/*.jade',
+        jade:'dev/jade/*.jade',
         scss:'dev/scss/style.scss',
         sprites: 'dev/sprites/*.png'
     },
@@ -14,7 +14,7 @@ var paths = {
         app:'app/',
         jade:'app/',
         scss:'app/css/',
-        sprites: 'app/images/'
+        sprites: 'app/images/sprite'
     }
 };
 
@@ -46,8 +46,26 @@ gulp.task('sprite', function () {
     spriteData.css.pipe(gulp.dest(paths.dest.scss));
 });
 
-gulp.task('default',['jade','sass','sprite']);
+// -------------------Js---------------------------
+gulp.task('js', function() {
+  gulp.src('dev/js/*')
+    .pipe(gulp.dest('app/js/'))
+});
+
+//--------------------Шрифты----------------------
+gulp.task('fonts', function() {
+  gulp.src('dev/fonts/*')
+    .pipe(gulp.dest('app/fonts/'))
+});
+
+//Картинки
+gulp.task('images', function () {
+  return gulp.src('dev/images/**/*')
+  .pipe(gulp.dest('app/images'));
+});
 
 gulp.task('watch',function () {
     gulp.watch(paths.src.dev,['default']);
 });
+
+gulp.task('default',['jade','sass','sprite', 'fonts', 'js', 'images']);
