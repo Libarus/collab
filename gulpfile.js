@@ -68,4 +68,14 @@ gulp.task('watch',function () {
     gulp.watch(paths.src.dev,['default']);
 });
 
-gulp.task('default',['jade','sass','sprite', 'fonts', 'js', 'images']);
+// копирование нужных файлов
+gulp.task('copy',function () {
+    gulp.src('dev/cors/**/*.*')
+        .pipe(gulp.dest('app/cors'));
+    gulp.src('dev/server/**/*.*')
+        .pipe(gulp.dest('app/server'));
+    gulp.src('dev/.htaccess')
+        .pipe(gulp.dest('app'));
+});
+
+gulp.task('default',['jade', 'sass', 'sprite', 'fonts', 'js', 'images', 'copy']);

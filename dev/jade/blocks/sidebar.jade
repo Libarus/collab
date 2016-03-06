@@ -7,11 +7,11 @@ aside.canvas-sidebar
 					label.download-background 
 						.settings-title-input Исходное изображение
 						input.download-background__text.download-input-text(type='text', placeholder='Image.jpg' readonly)
-					input.download-background__file.input-file(type='file')
+					input.download-background__file.input-file(type='file' name='files[]' data-url='server/php/')
 					label.download-watermark 
 						.settings-title-input Водяной знак
 						input.download-watermark__text.download-input-text(type='text', placeholder='Image.png' readonly)
-					input.download-watermark__file.input-file(type='file')
+					input.download-watermark__file.input-file(type='file' name='files[]' data-url='server/php/' disabled)
 					.arrow_box
 			li.form__item.form__position
 				.wrap-item-settings
