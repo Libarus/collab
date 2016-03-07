@@ -18,44 +18,16 @@ aside.canvas-sidebar
 					.switch.settings-title Положение
 					ul.switch__list
 						li.switch__item
-							a(href="#").switch__link_tile
+							a(href="#" data-view="tile").switch__link.switch__link_tile
 						li.switch__item
-							a(href="#").switch__link_single.switch__link_single_active
-					//- Cпособ отображение 9 зон
-					//- .position
-					//- 	ul.position__list
-					//- 		li.position__item
-					//- 			a(href="#").position__link.position__link_active
-					//- 		li.position__item
-					//- 			a(href="#").position__link
-					//- 		li.position__item
-					//- 			a(href="#").position__link
-					//- 		li.position__item
-					//- 			a(href="#").position__link
-					//- 		li.position__item
-					//- 			a(href="#").position__link
-					//- 		li.position__item
-					//- 			a(href="#").position__link
-					//- 		li.position__item
-					//- 			a(href="#").position__link
-					//- 		li.position__item
-					//- 			a(href="#").position__link
-					//- 		li.position__item
-					//- 			a(href="#").position__link
-					//- 	.position__inputs
-					//- 		.coordinat
-					//- 			label(for='spinner').coordinat__label X
-					//- 			input#spinnerX(name='value' placeholder='0')
-					//- 		.coordinat
-					//- 			label(for='spinner').coordinat__label Y
-					//- 			input#spinnerY(name='value' placeholder='0')
-					//- Способ отображения Замощение
-					.position.position_tile
+							a(href="#" data-view="single").switch__link.switch__link_single.switch__link_single_active
+					//- Смена видов
+					.position#views
 						ul.position__list
 							.vertical-line
 							.horizontal-line
 							li.position__item
-								a(href="#").position__link
+								a(href="#").position__link.position__link_active
 							li.position__item
 								a(href="#").position__link
 							li.position__item
@@ -74,9 +46,15 @@ aside.canvas-sidebar
 								a(href="#").position__link
 						.position__inputs
 							.coordinat
+								label(for='spinner').coordinat__label X
+								input#spinnerX(name='value' placeholder='0')
+							.coordinat
+								label(for='spinner').coordinat__label Y
+								input#spinnerY(name='value' placeholder='0')
+							.coordinat.coordinat-tile
 								label(for='spinner').coordinat__label_vert
 								input#spinnerVert(name='value' placeholder='0')
-							.coordinat
+							.coordinat.coordinat-tile
 								label(for='spinner').coordinat__label_hor 
 								input#spinnerHor(name='value' placeholder='0')
 			li.form__item.form__opacity

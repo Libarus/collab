@@ -1,3 +1,4 @@
+// Стрелочки для инпутов
 $(function() {
   $( "#spinnerX" ).spinner({
     min:0
@@ -12,9 +13,22 @@ $(function() {
     min:0
   });
 });
- $(function() {
-    $( "#slider" ).slider();
+// Слайдер
+$(function() {
+  $( "#slider" ).slider({
+      range: "min",
+      min: 1,
+      max: 100,
+      value:50
   });
+});
+// Код для скрытых инпутов типа файл, и текстовых инпутов
+ if($('.download-background')){
+    _chooseFileBackground()
+ }
+  if($('.download-watermark ')){
+    _chooseFileWatermark()
+ }
  function _chooseFileBackground(){
 
             $('.download-background').click(function(){
@@ -45,9 +59,43 @@ $(function() {
             }).change();// .change() в конце для того чтобы событие сработало при обновлении страницы
 
  };
- if($('.download-background')){
-    _chooseFileBackground()
+
+// Переключатель
+ $('.switch__link').on('click', _changeView);
+ function _changeView(e){
+    e.preventDefault();
+    _change($(this))
  }
-  if($('.download-watermark ')){
-    _chooseFileWatermark()
- }
+ previosClass = '';
+function _change($this){
+
+  item = $this.closest('.switch__link'),
+  itemClass = item.attr('class'),
+  view = item.attr("data-view"),
+  views = $('#views'),
+  prefix = 'position_',
+  classOfViewState = prefix + view; 
+  if (previosClass == '') {
+    previosClass = views.attr('class');
+  } views.attr('class', previosClass+ ' ' +classOfViewState);
+} 
+
+  switchTile = $('.switch__link_tile')
+  switchSingle = $('.switch__link_single')
+  switchTileActive = 'switch__link_tile_active'
+  switchSingleActive = 'switch__link_single_active'
+
+  switchTile.on('click', function(event) {
+    event.preventDefault();
+    if (!switchTile.hasClass(switchTileActive)) {
+      switchTile.addClass(switchTileActive)
+      switchSingle.removeClass(switchSingleActive)
+    }
+  });
+  switchSingle.on('click', function(event) {
+    event.preventDefault();
+    if (!switchSingle.hasClass(switchSingleActive)) {
+      switchSingle.addClass(switchSingleActive)
+      switchTile.removeClass(switchTileActive)
+    }
+  });

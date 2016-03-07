@@ -79,7 +79,7 @@
 	display:none;
 }
 
-/*---------------Оранжевая стрела вниз---------------*/
+/*---------------Оранжевая стрелка вниз---------------*/
 .form__item {
 	position: relative;
 	background: $lightgrey;
@@ -171,21 +171,22 @@
 
 /*------------------- Вид 9 зон -------------------*/
 .position{
+
 	position:relative;
 	@include clearfix();
 
 	&__list{
-	position:relative;
-	float:left;
-	box-sizing:border-box;
-	width:101px;
-	height:103px;
-	border:1px solid $grey;
-	@include border-radius(3px);
-	margin:0;
-	padding: 0;
-	line-height:0;
-	overflow:hidden;
+		position:relative;
+		float:left;
+		box-sizing:border-box;
+		width:101px;
+		height:103px;
+		border:1px solid $grey;
+		@include border-radius(3px);
+		margin:0;
+		padding: 0;
+		line-height:0;
+		overflow:hidden;
 	}
 	&__item{
 		display:inline-block;
@@ -203,7 +204,7 @@
 	}
 }
 .position__link:hover{
-	background:#dbe1e8;
+	background:#f97e76;
 }
 .position__link_active{
 	background:$orange;
@@ -275,49 +276,68 @@
 		background-position: 0px 0px;
 	}
 }
+.vertical-line{
+	display:none;
+}
+.horizontal-line{
+	display:none;
+}
+.coordinat-tile{
+	display:none;
+}
 /*-----------------------Вид -Замощение---------------------------*/
 .position_tile{
 	.position__link:hover{
 		cursor:default;
 		background:#dbe1e8;
 	}
-
-}
-.coordinat__label_vert, .coordinat__label_hor{
-	display:inline-block;
-	background-image: url(../images/images/sprite.png);
-	background-repeat:no-repeat;
-	
-}
-.coordinat__label_vert{
-    background-position: 0px -155px;
-    width: 13px;
-    height: 30px;
-    line-height: 30px;
-    vertical-align: middle;
-}
-.coordinat__label_hor{
-	background-position: 0px -32px;
-	width: 32px;
-	height: 9px;
-}
-.vertical-line{
-	position: absolute;
-    width: 10px;
-    height: 100%;
-    background: $orange;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
-.horizontal-line{
-	position: absolute;
-    width: 100%;
-    height: 11px;
-    background: $orange;
-    top: 0;
-    bottom: 0;
-    margin: auto;
+	.vertical-line{
+		display: block;
+		position: absolute;
+		width: 11px;
+		height: 100%;
+		background: #f97e76;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
+	.horizontal-line{
+		display:block;
+		position: absolute;
+		width: 100%;
+		height: 11px;
+		background: $orange;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+	}
+	.position__link_active{
+		background:#dbe1e8;
+	}
+	.coordinat__label_vert, .coordinat__label_hor{
+		display:inline-block;
+		background-image: url(../images/images/sprite.png);
+		background-repeat:no-repeat;
+		
+	}
+	.coordinat__label_vert{
+	    background-position: 0px -155px;
+	    width: 13px;
+	    height: 30px;
+	    line-height: 30px;
+	    vertical-align: middle;
+	}
+	.coordinat__label_hor{
+		background-position: 0px -32px;
+		width: 32px;
+		height: 9px;
+	}
+	.coordinat{
+		display:none;
+	}
+	.coordinat-tile{
+		display:block;
+	}
 }
 
 /*------------------Слайдер------------------*/
@@ -342,17 +362,17 @@
 	margin-left: -12px;
 	z-index: 2;
 	background-color: $grey;
-	@include border-radius(100%);  
 	border: 7px solid #dbe1e8;
 	box-shadow:0px 1px 1px 1px #ccc;
 	outline: none;  
+	@include border-radius(100%);  
 	&:hover,
 	&.ui-state-active {
-	cursor: pointer;
-	background-color: $orange;
-	box-shadow:0px 1px 2px 1px #ccc;
+		cursor: pointer;
+		background-color: $orange;
+		box-shadow:0px 1px 2px 1px #ccc;
 	} 
-	}
+}
 /*------------------Кнопки-----------------*/
 .form__buttons{
 	width:100%;
@@ -372,16 +392,26 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	&:hover{
-		-webkit-box-shadow: inset 0px 3px 11px 0px $lightgrey;
-		-moz-box-shadow: inset 0px 3px 11px 0px $lightgrey;
-		box-shadow: inset 0px 3px 11px 0px $lightgrey;
+		background-image: -moz-linear-gradient( 90deg, rgb(193,207,217) 0%, rgb(176,189,198) 95%, rgb(158,170,179) 100%);
+		background-image: -webkit-linear-gradient( 90deg, rgb(193,207,217) 0%, rgb(176,189,198) 95%, rgb(158,170,179) 100%);
+		background-image: -ms-linear-gradient( 90deg, rgb(193,207,217) 0%, rgb(176,189,198) 95%, rgb(158,170,179) 100%);
 	}
 }
 .button__reset{
 	float:left;
 	background:#c1cfd9;
+	&:hover{
+		background-image: -moz-linear-gradient( 90deg, rgb(193,207,217) 0%, rgb(176,189,198) 95%, rgb(158,170,179) 100%);
+		background-image: -webkit-linear-gradient( 90deg, rgb(193,207,217) 0%, rgb(176,189,198) 95%, rgb(158,170,179) 100%);
+		background-image: -ms-linear-gradient( 90deg, rgb(193,207,217) 0%, rgb(176,189,198) 95%, rgb(158,170,179) 100%);
+	}
 }
 .button__submit{
 	float:right;
 	background:$orange;
+	&:hover{
+		  background-image: -moz-linear-gradient( 90deg, rgb(249,126,118) 0%, rgb(238,121,113) 95%, rgb(227,115,108) 100%);
+		  background-image: -webkit-linear-gradient( 90deg, rgb(249,126,118) 0%, rgb(238,121,113) 95%, rgb(227,115,108) 100%);
+		  background-image: -ms-linear-gradient( 90deg, rgb(249,126,118) 0%, rgb(238,121,113) 95%, rgb(227,115,108) 100%);
+	}
 }
