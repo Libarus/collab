@@ -1,0 +1,44 @@
+* { box-sizing: border-box; }
+html, body { 
+	height: 100%; 
+}
+body{
+	background:url('../images/background.jpg') repeat repeat ;
+	background-size: cover;
+	font-family: 'robotolight';
+}
+// Сбрасываем списки
+ul{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+.wrapper{
+	display:table;
+	margin:0 auto;
+	position:relative;
+	min-height:100%;
+	height:auto!important;
+	overflow:hidden;
+	min-width: 960px;
+}
+.container {
+	width: 960px;
+	margin: 0 auto;
+	display:table-cell;
+	vertical-align:middle;
+	@include clearfix();
+}
+
+// Прибиваем футер к низу
+.empty{
+	display:table-row;
+	height:40px;
+	width:100%;
+}
+.footer{
+	height:40px;
+	line-height:40px;
+	margin-top: -40px;	
+	min-width: 960px;
+}

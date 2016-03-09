@@ -1,0 +1,417 @@
+//------------- Cтили для всего сайдбара------------------
+.canvas-sidebar{
+	float:right;
+	width:260px;
+	height:670px;
+	background-color: $lightgrey;
+  	padding: 25px 0 15px 0;
+  	&__header{
+		font-size: 26px;
+		font-family: 'robotolight';
+		font-weight: normal;  
+		line-height: 26px;
+		color: $darkgrey;
+		margin: 0 0 35px 0;
+		padding: 0 20px;
+		text-align: center;
+		max-width: 260px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+  	}
+}
+
+/*Обертка содержимого секций настроек*/
+.wrap-item-settings {
+    width: 100%;
+    padding: 0 20px 0 19px;
+    margin-bottom:26px;
+}
+.settings-title{
+	font-weight: bold;
+	font-size: 14px;
+	margin-bottom:28px;
+	max-width: 220px;
+/*	overflow: hidden;*/
+	text-overflow: ellipsis;   
+}
+.settings-title-input{
+	font-weight: bold;
+	font-size: 14px;
+	margin-bottom:8px;
+	max-width: 220px;
+	overflow: hidden;
+	text-overflow: ellipsis;  
+}
+
+// Оформление инпутов
+.download-background__text,
+.download-watermark__text{
+	display:block;
+	height:27px;
+	width:219px;
+	border: 1px solid $grey;
+	@include border-radius(3px);
+	margin-bottom: 20px;
+	position:relative;
+	padding-left:4px;
+}
+.download-background__text,
+.download-watermark__text{
+    background: url(../images/download.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    cursor:pointer;
+    outline:none;
+    max-width:219px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding-right:40px;
+}
+.download-title{
+	margin:0;
+	margin-bottom:10px;
+}
+.download-input-text{
+	font-size:12px;
+	font-family: "SegoeUILight";
+}
+.input-file{
+	display:none;
+}
+
+/*---------------Оранжевая стрелка вниз---------------*/
+.form__item {
+	position: relative;
+	background: $lightgrey;
+	border-bottom: 1px solid #f4c3c2;
+	margin-bottom: 8px;
+}
+.form__item:after, .form__item:before {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.form__item:after {
+	border-color: rgba(241, 241, 245, 0);
+	border-top-color: $lightgrey;
+	border-width: 9px;
+	margin-left: -9px;
+}
+.form__item:before {
+	border-color: rgba(244, 195, 194, 0);
+	border-top-color: #f4c3c2;
+	border-width: 10px;
+	margin-left: -10px;
+}
+/*---------------Стрелка вниз-END--------------*/
+
+
+/*-----------------ПЕРЕКЛЮЧАТЕЛЬ Видов---------------*/
+.switch{
+	display:inline-block;
+	width:50%;
+	margin-bottom:37px;
+	text-align:left;
+	&__list{
+		font-size:0;
+		display:inline-block;
+		width:50%;
+		text-align:right;
+
+	}
+	&__item{
+		display:inline-block;
+		width:19px;
+		height:19px;
+		margin-left:10px;
+	}
+	&__item:first-child{
+		margin-left:0;
+	}
+	&__link_tile{
+		display:inline-block;
+		background-image: url(../images/images/sprite.png);
+		background-position: 0px -41px;
+		width: 19px;
+		height: 19px;
+	}
+	&__link_single{
+		display:inline-block;
+		background-image: url(../images/images/sprite.png);
+		background-position: 0px -98px;
+		width: 19px;
+		height: 19px;
+	}
+	&__link_tile:hover{
+  		background-position: 0px -60px;
+	}
+	&__link_single:hover{
+		background-position: 0px -79px;
+	}
+	&__link_tile_active{
+		background-position: 0px -117px;
+	}
+	&__link_tile_active:hover{
+		background-position: 0px -117px;
+	}
+	&__link_single_active{
+		background-position: 0px -136px;
+	}
+	&__link_single_active:hover{
+		background-position: 0px -136px;
+	}
+}
+
+
+/*------------------- Вид 9 зон -------------------*/
+.position{
+
+	position:relative;
+	@include clearfix();
+
+	&__list{
+		position:relative;
+		float:left;
+		box-sizing:border-box;
+		width:101px;
+		height:103px;
+		border:1px solid $grey;
+		@include border-radius(3px);
+		margin:0;
+		padding: 0;
+		line-height:0;
+		overflow:hidden;
+	}
+	&__item{
+		display:inline-block;
+	}
+	&__link{
+		box-sizing:border-box;
+		display:inline-block;
+		width:34px;
+		height:34px;
+		font-size:0px;
+		background:#dbe1e8;
+		border-left:1px solid $grey;
+		border-bottom:1px solid $grey;
+		margin-left:-1px;
+	}
+}
+.position__link:hover{
+	background:#f97e76;
+}
+.position__link_active{
+	background:$orange;
+}
+.position__inputs{
+	float:right;
+	margin-right:19px;
+	text-align:right;
+}
+.ui-spinner-input{
+	width:45px;
+	height:45px;
+	border:1px solid $grey;
+	background-color: $lightgrey;
+	font-size: 22px;
+	line-height: 30px;
+	text-align: center;
+	margin-right:6px;
+	margin-bottom:12px;
+	@include border-radius(3px);
+	font-family: "SegoeUILight";
+}
+.ui-button-text{
+	display:none;
+}
+.ui-spinner-button{
+	width:46px;
+	height:46px;
+}
+.coordinat__label{
+	display:inline-block;
+	height:46px;
+	line-height:46px;
+	width:20px;
+	text-align: center;
+}
+.ui-spinner-up{
+	position:relative;
+	&:after{
+		content: "";
+		position: absolute;
+		background-image: url(../images/images/sprite.png);
+		background-repeat:repeat repeat;
+		background-position: 0px -24px;
+		width: 13px;
+		height: 8px;
+		top:-9px;
+		left:3px;
+	}
+	&:hover:after{
+		cursor:pointer;
+		background-position: 0px -16px;
+	}
+}
+.ui-spinner-down{
+	position:relative;
+	&:after{
+		content: "";
+		position: absolute;
+		background-image: url(../images/images/sprite.png);
+		background-position: 0px -8px;
+		width: 13px;
+		height: 8px;
+		bottom:-9px;
+		left:3px;
+	}
+	&:hover:after{
+		cursor:pointer;
+		background-position: 0px 0px;
+	}
+}
+.vertical-line{
+	display:none;
+}
+.horizontal-line{
+	display:none;
+}
+.coordinat-tile{
+	display:none;
+}
+/*-----------------------Вид -Замощение---------------------------*/
+.position_tile{
+	.position__link:hover{
+		cursor:default;
+		background:#dbe1e8;
+	}
+	.vertical-line{
+		display: block;
+		position: absolute;
+		width: 11px;
+		height: 100%;
+		background: #f97e76;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
+	.horizontal-line{
+		display:block;
+		position: absolute;
+		width: 100%;
+		height: 11px;
+		background: $orange;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+	}
+	.position__link_active{
+		background:#dbe1e8;
+	}
+	.coordinat__label_vert, .coordinat__label_hor{
+		display:inline-block;
+		background-image: url(../images/images/sprite.png);
+		background-repeat:no-repeat;
+		
+	}
+	.coordinat__label_vert{
+	    background-position: 0px -155px;
+	    width: 13px;
+	    height: 30px;
+	    line-height: 30px;
+	    vertical-align: middle;
+	}
+	.coordinat__label_hor{
+		background-position: 0px -32px;
+		width: 32px;
+		height: 9px;
+	}
+	.coordinat{
+		display:none;
+	}
+	.coordinat-tile{
+		display:block;
+	}
+}
+
+/*------------------Слайдер------------------*/
+.ui-slider-horizontal {
+  position: relative;
+  height: 3px;
+  background-color: #dbe1e8;
+
+  .ui-slider-range {
+    height: 3px;
+    background-color: $grey;
+  }
+}
+.slider-content{
+	margin-bottom:38px;
+}
+.ui-slider-handle {
+	position: absolute;
+	width: 8px;
+	height: 8px;  
+	top: -10px;
+	margin-left: -12px;
+	z-index: 2;
+	background-color: $grey;
+	border: 7px solid #dbe1e8;
+	box-shadow:0px 1px 1px 1px #ccc;
+	outline: none;  
+	@include border-radius(100%);  
+	&:hover,
+	&.ui-state-active {
+		cursor: pointer;
+		background-color: $orange;
+		box-shadow:0px 1px 2px 1px #ccc;
+	} 
+}
+/*------------------Кнопки-----------------*/
+.form__buttons{
+	width:100%;
+	padding: 0 11px;
+	margin-top:55px;
+	@include clearfix();
+}
+.button{
+	width:99px;
+	height:42px;
+	color:#fff;
+	font-size:18px;
+	font-family: 'robotomedium';
+	outline:none;
+	border:none;
+	@include border-radius(3px);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	&:hover{
+		background-image: -moz-linear-gradient( 90deg, rgb(193,207,217) 0%, rgb(176,189,198) 95%, rgb(158,170,179) 100%);
+		background-image: -webkit-linear-gradient( 90deg, rgb(193,207,217) 0%, rgb(176,189,198) 95%, rgb(158,170,179) 100%);
+		background-image: -ms-linear-gradient( 90deg, rgb(193,207,217) 0%, rgb(176,189,198) 95%, rgb(158,170,179) 100%);
+	}
+}
+.button__reset{
+	float:left;
+	background:#c1cfd9;
+	&:hover{
+		background-image: -moz-linear-gradient( 90deg, rgb(193,207,217) 0%, rgb(176,189,198) 95%, rgb(158,170,179) 100%);
+		background-image: -webkit-linear-gradient( 90deg, rgb(193,207,217) 0%, rgb(176,189,198) 95%, rgb(158,170,179) 100%);
+		background-image: -ms-linear-gradient( 90deg, rgb(193,207,217) 0%, rgb(176,189,198) 95%, rgb(158,170,179) 100%);
+	}
+}
+.button__submit{
+	float:right;
+	background:$orange;
+	&:hover{
+		  background-image: -moz-linear-gradient( 90deg, rgb(249,126,118) 0%, rgb(238,121,113) 95%, rgb(227,115,108) 100%);
+		  background-image: -webkit-linear-gradient( 90deg, rgb(249,126,118) 0%, rgb(238,121,113) 95%, rgb(227,115,108) 100%);
+		  background-image: -ms-linear-gradient( 90deg, rgb(249,126,118) 0%, rgb(238,121,113) 95%, rgb(227,115,108) 100%);
+	}
+}

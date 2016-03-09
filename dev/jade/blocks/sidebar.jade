@@ -1,0 +1,70 @@
+aside.canvas-sidebar
+	h2.canvas-sidebar__header Настройки
+	form.form(action="#")
+		ul.form__list
+			li.form__item.form__download-images
+				.wrap-item-settings
+					label.download-background 
+						.settings-title-input Исходное изображение
+						input.download-background__text.download-input-text(type='text', placeholder='Image.jpg' readonly)
+					input.download-background__file.input-file(type='file' name='files[]' data-url='server/php/')
+					label.download-watermark 
+						.settings-title-input Водяной знак
+						input.download-watermark__text.download-input-text(type='text', placeholder='Image.png' readonly)
+					input.download-watermark__file.input-file(type='file' name='files[]' data-url='server/php/' disabled)
+					.arrow_box
+			li.form__item.form__position
+				.wrap-item-settings
+					.switch.settings-title Положение
+					ul.switch__list
+						li.switch__item
+							a(href="#" data-view="tile").switch__link.switch__link_tile
+						li.switch__item
+							a(href="#" data-view="single").switch__link.switch__link_single.switch__link_single_active
+					//- Смена видов
+					.position#views
+						ul.position__list
+							.vertical-line
+							.horizontal-line
+							li.position__item
+								a(href="#").position__link.position__link_active
+							li.position__item
+								a(href="#").position__link
+							li.position__item
+								a(href="#").position__link
+							li.position__item
+								a(href="#").position__link
+							li.position__item
+								a(href="#").position__link
+							li.position__item
+								a(href="#").position__link
+							li.position__item
+								a(href="#").position__link
+							li.position__item
+								a(href="#").position__link
+							li.position__item
+								a(href="#").position__link
+						.position__inputs
+							.coordinat
+								label(for='spinner').coordinat__label X
+								input#spinnerX(name='value' placeholder='0')
+							.coordinat
+								label(for='spinner').coordinat__label Y
+								input#spinnerY(name='value' placeholder='0')
+							.coordinat.coordinat-tile
+								label(for='spinner').coordinat__label_vert
+								input#spinnerVert(name='value' placeholder='0')
+							.coordinat.coordinat-tile
+								label(for='spinner').coordinat__label_hor 
+								input#spinnerHor(name='value' placeholder='0')
+			li.form__item.form__opacity
+				.wrap-item-settings
+					.settings-title Прозрачность
+					.slider-content
+						#slider
+			.form__buttons
+				input(type="reset" value="Сброс").button.button__reset
+				input(type="submit" value="Скачать").button.button__submit
+
+
+

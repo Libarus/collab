@@ -1,11 +1,14 @@
-<p>Шаблон проекта для работы с jade + scss  + spritesmith</p>
+<p>Сверстаный дизайн 3-го выпускного проекта</p>
 
 <ol>
     <li><strong>Установка:</strong></li>
-    <li>git clone <a href="https://github.com/Libarus/jade-scss-spritesmith-template.git">https://github.com/Libarus/jade-scss-spritesmith-template.git</a></li>
+    <li>git clone <a href="https://github.com/Libarus/collab.git">https://github.com/Libarus/collab.git</a></li>
     <li>npm i</li>
     <li>bower i</li>
     <li>И собрать проект - gulp</li>
 </ol>
 
-    <p>Ветка Антона</p>
+<ul>
+    <li>Ветка Антона</li>
+    <li>Добавлена загрузка изображений. Работает с png</li>    
+</ul>
