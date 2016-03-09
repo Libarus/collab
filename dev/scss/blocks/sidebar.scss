@@ -186,6 +186,7 @@
 	padding: 0;
 	line-height:0;
 	overflow:hidden;
+	font-size: 0;
 	}
 	&__item{
 		display:inline-block;
@@ -203,7 +204,7 @@
 	}
 }
 .position__link:hover{
-	background:#dbe1e8;
+	background:$orange;
 }
 .position__link_active{
 	background:$orange;
@@ -275,6 +276,19 @@
 		background-position: 0px 0px;
 	}
 }
+
+.loaded__image {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.canvas__watermark {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.vertical-line, .horizontal-line {display: none;}
 /*-----------------------Вид -Замощение---------------------------*/
 .position_tile{
 	.position__link:hover{
