@@ -1,0 +1,83 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+```html
+<!-- `display: block` sprite -->
+<div class="icon-home"></div>
+
+<!-- `display: inline-block` sprite -->
+<img class="icon-home" />
+```
+*/
+.icon-arrow-hor {
+  background-image: url(../images/sprite.png);
+  background-position: 0px -32px;
+  width: 29px;
+  height: 9px;
+}
+.icon-arrow-vert {
+  background-image: url(../images/sprite.png);
+  background-position: 0px -155px;
+  width: 11px;
+  height: 30px;
+}
+.icon-spin-down-hover {
+  background-image: url(../images/sprite.png);
+  background-position: 0px 0px;
+  width: 13px;
+  height: 8px;
+}
+.icon-spin-down {
+  background-image: url(../images/sprite.png);
+  background-position: 0px -8px;
+  width: 13px;
+  height: 8px;
+}
+.icon-spin-up-hover {
+  background-image: url(../images/sprite.png);
+  background-position: 0px -16px;
+  width: 13px;
+  height: 8px;
+}
+.icon-spin-up {
+  background-image: url(../images/sprite.png);
+  background-position: 0px -24px;
+  width: 13px;
+  height: 8px;
+}
+.icon-switch-single-active {
+  background-image: url(../images/sprite.png);
+  background-position: 0px -136px;
+  width: 19px;
+  height: 19px;
+}
+.icon-switch-single-hover {
+  background-image: url(../images/sprite.png);
+  background-position: 0px -79px;
+  width: 19px;
+  height: 19px;
+}
+.icon-switch-single {
+  background-image: url(../images/sprite.png);
+  background-position: 0px -98px;
+  width: 19px;
+  height: 19px;
+}
+.icon-switch-tile-active {
+  background-image: url(../images/sprite.png);
+  background-position: 0px -117px;
+  width: 19px;
+  height: 19px;
+}
+.icon-switch-tile-hover {
+  background-image: url(../images/sprite.png);
+  background-position: 0px -60px;
+  width: 19px;
+  height: 19px;
+}
+.icon-switch-tile {
+  background-image: url(../images/sprite.png);
+  background-position: 0px -41px;
+  width: 19px;
+  height: 19px;
+}
