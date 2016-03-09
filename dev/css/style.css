@@ -122,10 +122,6 @@ ul {
   height: 27px;
   width: 219px;
   border: 1px solid #9eb2c0;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
   border-radius: 3px;
   margin-bottom: 20px;
   position: relative;
@@ -242,15 +238,12 @@ ul {
     width: 101px;
     height: 103px;
     border: 1px solid #9eb2c0;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -o-border-radius: 3px;
     border-radius: 3px;
     margin: 0;
     padding: 0;
     line-height: 0;
-    overflow: hidden; }
+    overflow: hidden;
+    font-size: 0; }
   .position__item {
     display: inline-block; }
   .position__link {
@@ -265,7 +258,7 @@ ul {
     margin-left: -1px; }
 
 .position__link:hover {
-  background: #dbe1e8; }
+  background: #f97e76; }
 
 .position__link_active {
   background: #f97e76; }
@@ -285,10 +278,6 @@ ul {
   text-align: center;
   margin-right: 6px;
   margin-bottom: 12px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
   border-radius: 3px;
   font-family: "SegoeUILight"; }
 
@@ -336,6 +325,18 @@ ul {
   .ui-spinner-down:hover:after {
     cursor: pointer;
     background-position: 0px 0px; }
+
+.loaded__image {
+  max-width: 100%;
+  max-height: 100%; }
+
+.canvas__watermark {
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.vertical-line, .horizontal-line {
+  display: none; }
 
 /*-----------------------Вид -Замощение---------------------------*/
 .position_tile .position__link:hover {
@@ -397,10 +398,6 @@ ul {
   margin-left: -12px;
   z-index: 2;
   background-color: #9eb2c0;
-  -webkit-border-radius: 100%;
-  -moz-border-radius: 100%;
-  -ms-border-radius: 100%;
-  -o-border-radius: 100%;
   border-radius: 100%;
   border: 7px solid #dbe1e8;
   box-shadow: 0px 1px 1px 1px #ccc;
@@ -429,16 +426,10 @@ ul {
   font-family: 'robotomedium';
   outline: none;
   border: none;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
   border-radius: 3px;
   overflow: hidden;
   text-overflow: ellipsis; }
   .button:hover {
-    -webkit-box-shadow: inset 0px 3px 11px 0px #f1f1f5;
-    -moz-box-shadow: inset 0px 3px 11px 0px #f1f1f5;
     box-shadow: inset 0px 3px 11px 0px #f1f1f5; }
 
 .button__reset {
@@ -455,3 +446,5 @@ ul {
   font-family: "SegoeUILight";
   font-weight: bold;
   color: #fff; }
+
+/*# sourceMappingURL=style.css.map */

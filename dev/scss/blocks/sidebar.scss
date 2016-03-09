@@ -176,17 +176,18 @@
 	@include clearfix();
 
 	&__list{
-		position:relative;
-		float:left;
-		box-sizing:border-box;
-		width:101px;
-		height:103px;
-		border:1px solid $grey;
-		@include border-radius(3px);
-		margin:0;
-		padding: 0;
-		line-height:0;
-		overflow:hidden;
+    	position:relative;
+    	float:left;
+    	box-sizing:border-box;
+    	width:101px;
+    	height:103px;
+    	border:1px solid $grey;
+    	@include border-radius(3px);
+    	margin:0;
+    	padding: 0;
+    	line-height:0;
+    	overflow:hidden;
+    	font-size: 0;
 	}
 	&__item{
 		display:inline-block;
@@ -204,7 +205,7 @@
 	}
 }
 .position__link:hover{
-	background:#f97e76;
+	background:$orange;
 }
 .position__link_active{
 	background:$orange;
@@ -276,15 +277,20 @@
 		background-position: 0px 0px;
 	}
 }
-.vertical-line{
-	display:none;
+
+.loaded__image {
+	max-width: 100%;
+	max-height: 100%;
 }
-.horizontal-line{
-	display:none;
+
+.canvas__watermark {
+	position: absolute;
+	top: 0;
+	left: 0;
 }
-.coordinat-tile{
-	display:none;
-}
+
+.vertical-line, .horizontal-line, .coordinat-tile {display: none;}
+
 /*-----------------------Вид -Замощение---------------------------*/
 .position_tile{
 	.position__link:hover{

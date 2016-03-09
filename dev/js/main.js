@@ -36,11 +36,18 @@ $(function() {
                 return(false);
             });
             $('.download-background__file').on('change',function(){
-                // console.log($('.file-upload').val())
+                //console.log($('.file-upload').val())
                 $('.download-background__text').val($('.download-background__file').val());
                 var text= $('.download-background__text').val();
                 text = text.replace("C:\\fakepath\\", "");
                 $('.download-background__text').val(text);
+                $('.loaded__image').load(function() {
+                $('.loaded__image').position({
+                      of: $('.canvas-content__wrapper'),
+                      my: 'center center',
+                      at: 'center center',
+                  });
+            });
             }).change();// .change() в конце для того чтобы событие сработало при обновлении страницы
 
  };
@@ -56,6 +63,7 @@ $(function() {
                 var text= $('.download-watermark__text').val();
                 text = text.replace("C:\\fakepath\\", "");
                 $('.download-watermark__text').val(text);
+                imageHandling.imageLoad();
             }).change();// .change() в конце для того чтобы событие сработало при обновлении страницы
 
  };
