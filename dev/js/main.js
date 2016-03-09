@@ -26,7 +26,7 @@ $(function() {
  if($('.download-background')){
     _chooseFileBackground()
  }
-  if($('.download-watermark ')){
+  if($('.download-watermark')){
     _chooseFileWatermark()
  }
  function _chooseFileBackground(){
@@ -42,12 +42,12 @@ $(function() {
                 text = text.replace("C:\\fakepath\\", "");
                 $('.download-background__text').val(text);
                 $('.loaded__image').load(function() {
-                $('.loaded__image').position({
-                      of: $('.canvas-content__wrapper'),
-                      my: 'center center',
-                      at: 'center center',
-                  });
-            });
+                    $('.loaded__image').position({
+                          of: $('.canvas-content__wrapper'),
+                          my: 'center center',
+                          at: 'center center',
+                      });
+                });
             }).change();// .change() в конце для того чтобы событие сработало при обновлении страницы
 
  };
@@ -72,7 +72,7 @@ $(function() {
  $('.switch__link').on('click', _changeView);
  function _changeView(e){
     e.preventDefault();
-    _change($(this))
+    _change($(this));
  }
  previosClass = '';
 function _change($this){
@@ -88,22 +88,22 @@ function _change($this){
   } views.attr('class', previosClass+ ' ' +classOfViewState);
 } 
 
-  switchTile = $('.switch__link_tile')
-  switchSingle = $('.switch__link_single')
-  switchTileActive = 'switch__link_tile_active'
-  switchSingleActive = 'switch__link_single_active'
+  switchTile = $('.switch__link_tile');
+  switchSingle = $('.switch__link_single');
+  switchTileActive = 'switch__link_tile_active';
+  switchSingleActive = 'switch__link_single_active';
 
   switchTile.on('click', function(event) {
     event.preventDefault();
     if (!switchTile.hasClass(switchTileActive)) {
-      switchTile.addClass(switchTileActive)
-      switchSingle.removeClass(switchSingleActive)
+      switchTile.addClass(switchTileActive);
+      switchSingle.removeClass(switchSingleActive);
     }
   });
   switchSingle.on('click', function(event) {
     event.preventDefault();
     if (!switchSingle.hasClass(switchSingleActive)) {
-      switchSingle.addClass(switchSingleActive)
-      switchTile.removeClass(switchTileActive)
+      switchSingle.addClass(switchSingleActive);
+      switchTile.removeClass(switchTileActive);
     }
   });

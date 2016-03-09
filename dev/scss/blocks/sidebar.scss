@@ -115,7 +115,7 @@
 /*-----------------ПЕРЕКЛЮЧАТЕЛЬ Видов---------------*/
 .switch{
 	display:inline-block;
-	width:50%;
+	width:48%;
 	margin-bottom:37px;
 	text-align:left;
 	&__list{
@@ -283,10 +283,19 @@
 	max-height: 100%;
 }
 
-.canvas__watermark {
-	position: absolute;
-	top: 0;
-	left: 0;
+.canvas {
+
+	&__image {
+	    width: 650px;
+	    height: 535px;
+	    overflowe: hidden;
+	}
+
+	&__watermark {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
 }
 
 .vertical-line, .horizontal-line, .coordinat-tile {display: none;}

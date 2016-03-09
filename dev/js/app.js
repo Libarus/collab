@@ -25,7 +25,7 @@
      * значения инпутов обнуляются.
      */
     $('.position__link').on('click', onChangeCorner);
-    $('#spinnerVert, #spinnerHor').on('spinstop spinchange', onChangeSpinner);
+    $('#spinnerY, #spinnerX').on('spinstop spinchange', onChangeSpinner);
     $('.button__reset').on('click', imageHandling.onReset);
   }
 
@@ -36,8 +36,8 @@
      * Изменяет значения цифровых инпутов, подставляя переданные значения
      * 
      */
-    $('#spinnerHor').val(Math.round(posObject.left));
-    $('#spinnerVert').val(Math.round(posObject.top));
+    $('#spinnerX').val(Math.round(posObject.left));
+    $('#spinnerY').val(Math.round(posObject.top));
   }
 
   function onChangeCorner(e) {
@@ -81,10 +81,10 @@
         topValue;
 
     if (~id.indexOf('Hor')) {
-      topValue = $('#spinnerVert').val();
+      topValue = $('#spinnerY').val();
       leftValue = value;
     } else {
-      leftValue = $('#spinnerHor').val();
+      leftValue = $('#spinnerX').val();
       topValue = value;
     }
 
@@ -141,7 +141,7 @@
         maxX = cMaxX - $('.loaded__watermark').width(),
         maxY = cMaxY - $('.loaded__watermark').height(),
         max = [maxX, maxY],
-        ids = ['#spinnerHor', '#spinnerVert'];
+        ids = ['#spinnerX', '#spinnerY'];
 
     ids.forEach(function (item, i) {
       $(item).spinner({
