@@ -7,3 +7,5 @@
     <li>bower i</li>
     <li>И собрать проект - gulp</li>
 </ol>
+
+<p>Ветка katya</p>
