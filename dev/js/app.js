@@ -25,7 +25,7 @@
      * значения инпутов обнуляются.
      */
     $('.position__link').on('click', onChangeCorner);
-    $('#spinnerVert, #spinnerHor').on('spinstop spinchange', onChangeSpinner);
+    $('#spinnerY, #spinnerX').on('spinstop spinchange', onChangeSpinner);
     $('.button__reset').on('click', imageHandling.onReset);
   }
 
@@ -36,8 +36,8 @@
      * Изменяет значения цифровых инпутов, подставляя переданные значения
      * 
      */
-    $('#spinnerHor').val(Math.round(posObject.left));
-    $('#spinnerVert').val(Math.round(posObject.top));
+    $('#spinnerX').val(Math.round(posObject.left));
+    $('#spinnerY').val(Math.round(posObject.top));
   }
 
   function onChangeCorner(e) {
@@ -61,6 +61,8 @@
           at: markPos[0] + ' ' + markPos[1],
           using: function(css, calc) {
               $(this).stop(true).animate(css, 200, "linear");
+			  css.top = css.top - relativePos.top;
+              css.left = css.left - relativePos.left;
               changeInputs(css);
           }
       });
@@ -81,10 +83,10 @@
         topValue;
 
     if (~id.indexOf('Hor')) {
-      topValue = $('#spinnerVert').val();
+      topValue = $('#spinnerY').val();
       leftValue = value;
     } else {
-      leftValue = $('#spinnerHor').val();
+      leftValue = $('#spinnerX').val();
       topValue = value;
     }
 
@@ -111,6 +113,8 @@
         at: 'left+' + posObject.left + ' top+' + posObject.top,
         using: function(css, calc) {
             $(this).stop(true).animate(css, 200, "linear");
+			css.top = css.top - relativePos.top;
+            css.left = css.left - relativePos.left;
             changeInputs(css);
         }
     });
@@ -125,6 +129,8 @@
     $('.loaded__watermark').draggable({ 
         containment: ".loaded__image",
         stop: function( event, ui ) {
+			ui.position.top = ui.position.top - relativePos.top;
+            ui.position.left = ui.position.left - relativePos.left;
             changeInputs(ui.position);
         } 
     });
@@ -141,7 +147,7 @@
         maxX = cMaxX - $('.loaded__watermark').width(),
         maxY = cMaxY - $('.loaded__watermark').height(),
         max = [maxX, maxY],
-        ids = ['#spinnerHor', '#spinnerVert'];
+        ids = ['#spinnerX', '#spinnerY'];
 
     ids.forEach(function (item, i) {
       $(item).spinner({
