@@ -1,0 +1,450 @@
+@charset "UTF-8";
+/* Файл для scss переменных ( $name : value; ) */
+/*Файл с переменными*/
+/*Файл с миксинами*/
+* {
+  box-sizing: border-box; }
+
+html, body {
+  height: 100%; }
+
+body {
+  background: url("../images/background.jpg") repeat repeat;
+  background-size: cover;
+  font-family: 'robotolight'; }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
+.wrapper {
+  display: table;
+  margin: 0 auto;
+  position: relative;
+  min-height: 100%;
+  height: auto !important;
+  overflow: hidden;
+  min-width: 960px; }
+
+.container {
+  width: 960px;
+  margin: 0 auto;
+  display: table-cell;
+  vertical-align: middle; }
+  .container:before, .container:after {
+    content: "";
+    display: table; }
+  .container:after {
+    clear: both; }
+
+.empty {
+  display: table-row;
+  height: 40px;
+  width: 100%; }
+
+.footer {
+  height: 40px;
+  line-height: 40px;
+  margin-top: -40px;
+  min-width: 960px; }
+
+/*Файл с общими стилями*/
+.canvas-content {
+  float: left;
+  width: 700px;
+  height: 670px;
+  padding: 15px 25px 20px 25px;
+  box-sizing: border-box;
+  background: url("../images/background-canvas-pt.jpg");
+  background-size: cover; }
+  .canvas-content__header {
+    color: #fff;
+    line-height: 46px;
+    font-size: 36px;
+    font-weight: normal;
+    margin: 0 0 50px 0;
+    max-width: 650px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: "SegoeUILight"; }
+
+.canvas-content__wrapper {
+  width: 650px;
+  height: 535px;
+  background: #fff;
+  position: relative; }
+
+.canvas-sidebar {
+  float: right;
+  width: 260px;
+  height: 670px;
+  background-color: #f1f1f5;
+  padding: 25px 0 15px 0; }
+  .canvas-sidebar__header {
+    font-size: 26px;
+    font-family: 'robotolight';
+    font-weight: normal;
+    line-height: 26px;
+    color: #2e3641;
+    margin: 0 0 35px 0;
+    padding: 0 20px;
+    text-align: center;
+    max-width: 260px;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+
+/*Обертка содержимого секций настроек*/
+.wrap-item-settings {
+  width: 100%;
+  padding: 0 20px 0 19px;
+  margin-bottom: 26px; }
+
+.settings-title {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 28px;
+  max-width: 220px;
+  /*	overflow: hidden;*/
+  text-overflow: ellipsis; }
+
+.settings-title-input {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 8px;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.download-background__text,
+.download-watermark__text {
+  display: block;
+  height: 27px;
+  width: 219px;
+  border: 1px solid #9eb2c0;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 4px; }
+
+.download-background__text,
+.download-watermark__text {
+  background: url(../images/download.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  cursor: pointer;
+  outline: none;
+  max-width: 219px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 40px; }
+
+.download-title {
+  margin: 0;
+  margin-bottom: 10px; }
+
+.download-input-text {
+  font-size: 12px;
+  font-family: "SegoeUILight"; }
+
+.input-file {
+  display: none; }
+
+/*---------------Оранжевая стрела вниз---------------*/
+.form__item {
+  position: relative;
+  background: #f1f1f5;
+  border-bottom: 1px solid #f4c3c2;
+  margin-bottom: 8px; }
+
+.form__item:after, .form__item:before {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none; }
+
+.form__item:after {
+  border-color: rgba(241, 241, 245, 0);
+  border-top-color: #f1f1f5;
+  border-width: 9px;
+  margin-left: -9px; }
+
+.form__item:before {
+  border-color: rgba(244, 195, 194, 0);
+  border-top-color: #f4c3c2;
+  border-width: 10px;
+  margin-left: -10px; }
+
+/*---------------Стрелка вниз-END--------------*/
+/*-----------------ПЕРЕКЛЮЧАТЕЛЬ Видов---------------*/
+.switch {
+  display: inline-block;
+  width: 50%;
+  margin-bottom: 37px;
+  text-align: left; }
+  .switch__list {
+    font-size: 0;
+    display: inline-block;
+    width: 50%;
+    text-align: right; }
+  .switch__item {
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    margin-left: 10px; }
+  .switch__item:first-child {
+    margin-left: 0; }
+  .switch__link_tile {
+    display: inline-block;
+    background-image: url(../images/images/sprite.png);
+    background-position: 0px -41px;
+    width: 19px;
+    height: 19px; }
+  .switch__link_single {
+    display: inline-block;
+    background-image: url(../images/images/sprite.png);
+    background-position: 0px -98px;
+    width: 19px;
+    height: 19px; }
+  .switch__link_tile:hover {
+    background-position: 0px -60px; }
+  .switch__link_single:hover {
+    background-position: 0px -79px; }
+  .switch__link_tile_active {
+    background-position: 0px -117px; }
+  .switch__link_tile_active:hover {
+    background-position: 0px -117px; }
+  .switch__link_single_active {
+    background-position: 0px -136px; }
+  .switch__link_single_active:hover {
+    background-position: 0px -136px; }
+
+/*------------------- Вид 9 зон -------------------*/
+.position {
+  position: relative; }
+  .position:before, .position:after {
+    content: "";
+    display: table; }
+  .position:after {
+    clear: both; }
+  .position__list {
+    position: relative;
+    float: left;
+    box-sizing: border-box;
+    width: 101px;
+    height: 103px;
+    border: 1px solid #9eb2c0;
+    border-radius: 3px;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    overflow: hidden;
+    font-size: 0; }
+  .position__item {
+    display: inline-block; }
+  .position__link {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    font-size: 0px;
+    background: #dbe1e8;
+    border-left: 1px solid #9eb2c0;
+    border-bottom: 1px solid #9eb2c0;
+    margin-left: -1px; }
+
+.position__link:hover {
+  background: #f97e76; }
+
+.position__link_active {
+  background: #f97e76; }
+
+.position__inputs {
+  float: right;
+  margin-right: 19px;
+  text-align: right; }
+
+.ui-spinner-input {
+  width: 45px;
+  height: 45px;
+  border: 1px solid #9eb2c0;
+  background-color: #f1f1f5;
+  font-size: 22px;
+  line-height: 30px;
+  text-align: center;
+  margin-right: 6px;
+  margin-bottom: 12px;
+  border-radius: 3px;
+  font-family: "SegoeUILight"; }
+
+.ui-button-text {
+  display: none; }
+
+.ui-spinner-button {
+  width: 46px;
+  height: 46px; }
+
+.coordinat__label {
+  display: inline-block;
+  height: 46px;
+  line-height: 46px;
+  width: 20px;
+  text-align: center; }
+
+.ui-spinner-up {
+  position: relative; }
+  .ui-spinner-up:after {
+    content: "";
+    position: absolute;
+    background-image: url(../images/images/sprite.png);
+    background-repeat: repeat repeat;
+    background-position: 0px -24px;
+    width: 13px;
+    height: 8px;
+    top: -9px;
+    left: 3px; }
+  .ui-spinner-up:hover:after {
+    cursor: pointer;
+    background-position: 0px -16px; }
+
+.ui-spinner-down {
+  position: relative; }
+  .ui-spinner-down:after {
+    content: "";
+    position: absolute;
+    background-image: url(../images/images/sprite.png);
+    background-position: 0px -8px;
+    width: 13px;
+    height: 8px;
+    bottom: -9px;
+    left: 3px; }
+  .ui-spinner-down:hover:after {
+    cursor: pointer;
+    background-position: 0px 0px; }
+
+.loaded__image {
+  max-width: 100%;
+  max-height: 100%; }
+
+.canvas__watermark {
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.vertical-line, .horizontal-line {
+  display: none; }
+
+/*-----------------------Вид -Замощение---------------------------*/
+.position_tile .position__link:hover {
+  cursor: default;
+  background: #dbe1e8; }
+
+.coordinat__label_vert, .coordinat__label_hor {
+  display: inline-block;
+  background-image: url(../images/images/sprite.png);
+  background-repeat: no-repeat; }
+
+.coordinat__label_vert {
+  background-position: 0px -155px;
+  width: 13px;
+  height: 30px;
+  line-height: 30px;
+  vertical-align: middle; }
+
+.coordinat__label_hor {
+  background-position: 0px -32px;
+  width: 32px;
+  height: 9px; }
+
+.vertical-line {
+  position: absolute;
+  width: 10px;
+  height: 100%;
+  background: #f97e76;
+  left: 0;
+  right: 0;
+  margin: auto; }
+
+.horizontal-line {
+  position: absolute;
+  width: 100%;
+  height: 11px;
+  background: #f97e76;
+  top: 0;
+  bottom: 0;
+  margin: auto; }
+
+/*------------------Слайдер------------------*/
+.ui-slider-horizontal {
+  position: relative;
+  height: 3px;
+  background-color: #dbe1e8; }
+  .ui-slider-horizontal .ui-slider-range {
+    height: 3px;
+    background-color: #9eb2c0; }
+
+.slider-content {
+  margin-bottom: 38px; }
+
+.ui-slider-handle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: -10px;
+  margin-left: -12px;
+  z-index: 2;
+  background-color: #9eb2c0;
+  border-radius: 100%;
+  border: 7px solid #dbe1e8;
+  box-shadow: 0px 1px 1px 1px #ccc;
+  outline: none; }
+  .ui-slider-handle:hover, .ui-slider-handle.ui-state-active {
+    cursor: pointer;
+    background-color: #f97e76;
+    box-shadow: 0px 1px 2px 1px #ccc; }
+
+/*------------------Кнопки-----------------*/
+.form__buttons {
+  width: 100%;
+  padding: 0 11px;
+  margin-top: 55px; }
+  .form__buttons:before, .form__buttons:after {
+    content: "";
+    display: table; }
+  .form__buttons:after {
+    clear: both; }
+
+.button {
+  width: 99px;
+  height: 42px;
+  color: #fff;
+  font-size: 18px;
+  font-family: 'robotomedium';
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+  .button:hover {
+    box-shadow: inset 0px 3px 11px 0px #f1f1f5; }
+
+.button__reset {
+  float: left;
+  background: #c1cfd9; }
+
+.button__submit {
+  float: right;
+  background: #f97e76; }
+
+.footer {
+  text-align: center;
+  font-size: 12px;
+  font-family: "SegoeUILight";
+  font-weight: bold;
+  color: #fff; }
+
+/*# sourceMappingURL=style.css.map */
