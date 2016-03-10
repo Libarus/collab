@@ -82,7 +82,7 @@
         leftValue,
         topValue;
 
-    if (~id.indexOf('Hor')) {
+    if (~id.indexOf('X')) {
       topValue = $('#spinnerY').val();
       leftValue = value;
     } else {
