@@ -61,8 +61,10 @@
           at: markPos[0] + ' ' + markPos[1],
           using: function(css, calc) {
               $(this).stop(true).animate(css, 200, "linear");
-			  css.top = css.top - relativePos.top;
+
+      			  css.top = css.top - relativePos.top;
               css.left = css.left - relativePos.left;
+
               changeInputs(css);
           }
       });
@@ -113,8 +115,10 @@
         at: 'left+' + posObject.left + ' top+' + posObject.top,
         using: function(css, calc) {
             $(this).stop(true).animate(css, 200, "linear");
-			css.top = css.top - relativePos.top;
+
+      			css.top = css.top - relativePos.top;
             css.left = css.left - relativePos.left;
+
             changeInputs(css);
         }
     });
@@ -129,7 +133,8 @@
     $('.loaded__watermark').draggable({ 
         containment: ".loaded__image",
         stop: function( event, ui ) {
-			ui.position.top = ui.position.top - relativePos.top;
+
+			      ui.position.top = ui.position.top - relativePos.top;
             ui.position.left = ui.position.left - relativePos.left;
             changeInputs(ui.position);
         } 
