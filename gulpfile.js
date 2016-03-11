@@ -8,15 +8,13 @@ var paths = {
         dev:'dev/**/*.*',
         jade:'dev/jade/*.jade',
         scss:'dev/scss/style.scss',
-        sprites: 'dev/sprites/*.png',
-        sprites_social: 'dev/sprites_social/*.png'
+        sprites: 'dev/sprites/*.png'
     },
     dest:{
         app:'app/',
         jade:'app/',
         scss:'app/css/',
-        sprites: 'app/images/sprite',
-        sprites_social: 'app/images/sprites_social'
+        sprites: 'app/images/sprite'
     }
 };
 
@@ -45,18 +43,6 @@ gulp.task('sprite', function () {
                 algorithm: "top-down"
         }));
     spriteData.img.pipe(gulp.dest(paths.dest.sprites));
-    spriteData.css.pipe(gulp.dest(paths.dest.scss));
-});
-gulp.task('sprites_social', function () {
-    var spriteData = gulp.src(paths.src. sprites_social)
-        .pipe(spritesmith({
-                imgName: '../images/sprites_social.png',
-                cssName: 'sprites_social.css',
-                algorithm: "top-down",
-                padding:30
-
-        }));
-    spriteData.img.pipe(gulp.dest(paths.dest.sprites_social));
     spriteData.css.pipe(gulp.dest(paths.dest.scss));
 });
 
@@ -92,7 +78,4 @@ gulp.task('copy',function () {
         .pipe(gulp.dest('app'));
 });
 
-gulp.task('default',['jade', 'sass', 'sprite', 'sprites_social', 'fonts', 'js', 'images', 'copy']);
-gulp.task('watching', function () {
-    gulp.watch('dev/**/*.*', ['default']);
-});
+gulp.task('default',['jade', 'sass', 'sprite', 'fonts', 'js', 'images', 'copy']);

@@ -3,23 +3,8 @@
  */
 $(function(){
   var singleContent = $('.canvas-content__wrapper').html();
-function GeneralTiling() {
+  function GeneralTiling() {
 
-      //создаю свою разметку
-      function createMarkup() {
-        var imageURL = $('.loaded__image').attr('src');
-        var tilingURL = $('.loaded__watermark').attr('src');
-        var Tpl = '<div class="watermark__box-img">\
-                <img src="'+imageURL+'" id="watermark__image_BG" class="watermark__image_BG">\
-                <div id="watermark__tiling_box" class="watermark__tiling_box">\
-                    <img src="'+tilingURL+'" class="watermark__tiling_image">\
-                </div>\
-            </div>';
-        $('.canvas-content__wrapper').html(Tpl);
-      }
-      if($('.loaded__image')){
-        createMarkup();//меняю разметку  
-      }
 
 
 
@@ -41,52 +26,6 @@ function GeneralTiling() {
       /*=================================================*/
 
       imageMax();//подгоняю под размер родителя
-      tilingMax();//выравниваю вотермарки и подгоняю под размер родителя
-
-
-      /*=================================================*/
-      var imageHeightNew = image.height();//новая высота изображения
-      var imageWidthNew = image.width();//новая ширина изображения
-      var tilingHeightNew = tiling.height();//новая высота вотермарка
-      var tilingWidthNew = tiling.width();//новая ширина вотермарка
-      /*=================================================*/
-
-      var quantityTilingX = Math.round(imageWidthNew / tilingWidthNew) + 2;//количество водяных по горизонтали
-      var quantityTilingY = Math.round(imageHeightNew / tilingHeightNew) + 2;//количество водяных по вертикали
-      var createTilingQuantity = quantityTilingX * quantityTilingY;//количество водяных
-
-
-      var tilingMaxHeight = tiling.css("max-height");
-      var tilingMaxWidth = tiling.css("max-width");
-
-
-      createTiling(createTilingQuantity);//создаю и вставляю вотермарки
-      tilingBoxSize();
-
-      dragg();
-
-
-      // параметры картинки замощения:
-      // width = ширина,
-      // height = высота,
-      // number = количество копий
-      function createTiling(number){
-          var tilingImage = "<img src='"+tilingURL+"' class='watermark__tiling_image' style='max-height:"+tilingMaxHeight+";max-width: "+tilingMaxWidth+";'>";//шаблон
-          var arr = new Array(number + 1).join(tilingImage);// создание копий на основе шаблона
-          tilingBox.html(arr);// вставляем копии в документ
-      }
-
-      function dragg(){
-        var waterBoxOffsetLeft = watermarkBoxImg.offset().left - (tilingBox.width() - imageWidthNew);
-        var waterBoxOffsetTop = watermarkBoxImg.offset().top - (tilingBox.height() - imageHeightNew);
-        var waterBoxOffsetRight = watermarkBoxImg.offset().left;
-        var waterBoxOffsetBottom = watermarkBoxImg.offset().top;
-        tilingBox.draggable({
-          containment:[waterBoxOffsetLeft,waterBoxOffsetTop,waterBoxOffsetRight,waterBoxOffsetBottom]
-        });
-
-      }
-
       //максимальная ширина и высота фонового изображения
       //делаю это здесть чтобы узнать размер изначального изображения
       function imageMax(){
@@ -94,16 +33,16 @@ function GeneralTiling() {
               'max-width': watermarkWidth + 'px',
               'max-height': watermarkHeight + 'px'
           });
-          watermarkBoxImgCenter();
       }
-
       //центрируем главную фотографию
       function watermarkBoxImgCenter(){
           watermarkBoxImg.css({
               top: ((watermarkHeight - watermarkBoxImg.height()) / 2) + 'px'
           });
       }
+      watermarkBoxImgCenter();
 
+      tilingMax();//выравниваю вотермарки и подгоняю под размер родителя
       //выравниваю вотермарки и подгоняю под размер родителя
       function tilingMax(){
           if(tiling.height() > imageHeightOld || tiling.width() > imageWidthOld){
@@ -118,20 +57,57 @@ function GeneralTiling() {
           }
       }
 
+      /*=================================================*/
+      var imageHeightNew = image.height();//новая высота изображения
+      var imageWidthNew = image.width();//новая ширина изображения
+      var tilingHeightNew = tiling.height();//новая высота вотермарка
+      var tilingWidthNew = tiling.width();//новая ширина вотермарка
+      /*=================================================*/
+
+      var quantityTilingX = Math.round(imageWidthNew / tilingWidthNew) + 2;//количество водяных по горизонтали
+      var quantityTilingY = Math.round(imageHeightNew / tilingHeightNew) + 2;//количество водяных по вертикали
+      var createTilingQuantity = quantityTilingX * quantityTilingY;//количество водяных
+
+      var tilingMaxHeight = tiling.css("max-height");
+      var tilingMaxWidth = tiling.css("max-width");
+
+      createTiling(createTilingQuantity);//создаю и вставляю вотермарки
+      // параметры картинки замощения:
+      // width = ширина,
+      // height = высота,
+      // number = количество копий
+      function createTiling(number){
+          var tilingImage = "<img src='"+tilingURL+"' class='watermark__tiling_image' style='max-height:"+tilingMaxHeight+";max-width: "+tilingMaxWidth+";margin-bottom:"+$('#spinnerVert').val()+"px;margin-right:"+$('#spinnerHor').val()+"px;'>";//шаблон
+          var arr = new Array(number + 1).join(tilingImage);// создание копий на основе шаблона
+          tilingBox.html(arr);// вставляем копии в документ
+      }
+
+      tilingBoxSize();
       function tilingBoxSize(){
           tilingBox.innerWidth(quantityTilingX * tilingWidthNew).innerHeight(tilingHeightNew * quantityTilingY);
       }
 
+
+      dragg();
+      function dragg(){
+        var waterBoxOffsetLeft = watermarkBoxImg.offset().left - (tilingBox.width() - imageWidthNew);
+        var waterBoxOffsetTop = watermarkBoxImg.offset().top - (tilingBox.height() - imageHeightNew);
+        var waterBoxOffsetRight = watermarkBoxImg.offset().left;
+        var waterBoxOffsetBottom = watermarkBoxImg.offset().top;
+        tilingBox.draggable({
+          containment:[waterBoxOffsetLeft,waterBoxOffsetTop,waterBoxOffsetRight,waterBoxOffsetBottom]
+        });
+
+      }
+
+
+
       $('#spinnerHor').spinner({
           spin: function(event, ui) {
             var thisValue = $(this).val();
-            tiling = $('.watermark__tiling_image');
-            tilingBox = $('#watermark__tiling_box');
-            tiling.css('margin-right', thisValue +'px');
+            tilingBox.width(($('.watermark__tiling_image').width() + 1 + +$(this).val()) * quantityTilingX);
+            $('.watermark__tiling_image').css('margin-right', thisValue +'px');
             dragg();
-            tilingBox.css({
-                'width': tilingBox.width() + 'px'
-            });
             $('.vertical-line').width(thisValue);
           }
       });
@@ -139,32 +115,58 @@ function GeneralTiling() {
       $('#spinnerVert').spinner({
           spin: function(event, ui) {
             var thisValue = $(this).val();
-            tiling = $('.watermark__tiling_image');
-            tilingBox = $('#watermark__tiling_box');
-            tiling.css('margin-bottom', thisValue +'px');
+            tilingBox.height(($('.watermark__tiling_image').height() + 1 + +$(this).val()) * quantityTilingY);
+            $('.watermark__tiling_image').css('margin-bottom', thisValue +'px');
             dragg();
-            tilingBox.css({
-                'height': tilingBox.height() + 'px'
-            });
             $('.horizontal-line').height(thisValue);
           }
       });
-
-
-
-
-
+      $('.watermark__tiling_image').on('load',function(){
+        GeneralTiling();
+      });
 }
 
 
 
-$('.switch__list').on('click',function(e) {
+
+
+//создаю свою разметку
+function createMarkup() {
+  var imageURL = $('.loaded__image').attr('src');
+  var tilingURL = $('.loaded__watermark').attr('src');
+  var Tpl = '<div class="watermark__box-img">\
+          <img src="'+imageURL+'" id="watermark__image_BG" class="watermark__image_BG">\
+          <div id="watermark__tiling_box" class="watermark__tiling_box">\
+              <img src="'+tilingURL+'" class="watermark__tiling_image" style="margin-bottom:'+$("#spinnerVert").val()+'px;margin-right:"'+$('#spinnerHor').val()+'px";">\
+          </div>\
+      </div>';
+  $('.canvas-content__wrapper').html(Tpl);
+}
+
+
+
+$('.switch__link').after('<div class="disable"></div>');
+$('.switch__link_tile_active, .switch__link_single_active').siblings('.disable').css('z-index', '99999999');
+
+$('.switch__link').on('click', function(e) {
   var target = e.target;
-  console.log(target);
-  if($(target).hasClass('switch__link_tile_active')){
+  $(target).siblings('.disable').css('z-index', '99999999');
+  $(target).closest('.switch__item').siblings('.switch__item').find('.disable').css('z-index', '-1');
+
+  if($(target).hasClass('switch__link_tile_active') && $('.loaded__image')){
+      createMarkup();//меняю разметку
       GeneralTiling();
-      console.log(target);
+      console.log($('#spinnerVert').val());
   } else {
+    var imageURL = $('#watermark__image_BG').attr('src');
+    var tilingURL = $('.watermark__tiling_image').attr('src');
+
+    $('.canvas-content__wrapper').html(singleContent);
+    $('.loaded__image').attr('src', imageURL).css({
+        top: (($('.canvas__image').height() - $('.loaded__image').height()) / 2) + 'px',
+        'position': 'relative'
+    });
+    $('.loaded__watermark').attr('src', tilingURL);
   }
 });
 

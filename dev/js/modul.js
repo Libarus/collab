@@ -23,8 +23,8 @@ var myModule = (function () {
             $('.loaded__image').attr('src', imgFirst.url);
             $('#watermark__image_BG').attr('src', imgFirst.url);
             $('.download-watermark__file').removeAttr('disabled');
-                }
-            });
+        }
+    });
         };
         var _fileUploadSecond = function () {
         	$(this).fileupload({
@@ -38,8 +38,8 @@ var myModule = (function () {
             $(".loaded__watermark").attr("src", imgSecond.url);
             $('.watermark__tiling_image').attr("src", imgSecond.url);
             $('[disabled]').removeAttr('disabled');
-                    }
-                });
+        }
+    });
         };
 
 return {
