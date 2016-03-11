@@ -13,14 +13,32 @@ $(function() {
     min:0
   });
 });
+
+//
+function acceptOpacityWaterMark() {
+  var opacityValue = $('.slider-result-hidden').val() * 0.01;
+  $('.loaded__watermark').css('opacity', opacityValue);
+  setTimeout(acceptOpacityWaterMark,100);
+}
+
 // Слайдер
 $(function() {
   $( "#slider" ).slider({
       range: "min",
       min: 1,
       max: 100,
-      value:50
+      value:100,
+                //Получаем значение и выводим его на странице
+                //Обновляем скрытое поле формы, так что можно передать данные с помощью формы
+                slide: function( event, ui ) {
+                    //$( ".slider-result" ).html( ui.value );
+                    $('.slider-result-hidden').val(ui.value);
+                    var opacityValue = ui.value * 0.01;
+                    $('.loaded__watermark').css('opacity', opacityValue);
+                },
   });
+  $('.slider-result-hidden').val(100);
+
 });
 // Код для скрытых инпутов типа файл, и текстовых инпутов
  if($('.download-background')){
@@ -47,7 +65,9 @@ $(function() {
                           my: 'center center',
                           at: 'center center',
                       });
+                    imageHandling.onReset();
                 });
+                
             }).change();// .change() в конце для того чтобы событие сработало при обновлении страницы
 
  };
@@ -63,6 +83,7 @@ $(function() {
                 var text= $('.download-watermark__text').val();
                 text = text.replace("C:\\fakepath\\", "");
                 $('.download-watermark__text').val(text);
+                
                 imageHandling.imageLoad();
             }).change();// .change() в конце для того чтобы событие сработало при обновлении страницы
 

@@ -61,8 +61,10 @@
           at: markPos[0] + ' ' + markPos[1],
           using: function(css, calc) {
               $(this).stop(true).animate(css, 200, "linear");
-			  css.top = css.top - relativePos.top;
+
+      			  css.top = css.top - relativePos.top;
               css.left = css.left - relativePos.left;
+
               changeInputs(css);
           }
       });
@@ -113,8 +115,10 @@
         at: 'left+' + posObject.left + ' top+' + posObject.top,
         using: function(css, calc) {
             $(this).stop(true).animate(css, 200, "linear");
-			css.top = css.top - relativePos.top;
+
+      			css.top = css.top - relativePos.top;
             css.left = css.left - relativePos.left;
+
             changeInputs(css);
         }
     });
@@ -129,7 +133,8 @@
     $('.loaded__watermark').draggable({ 
         containment: ".loaded__image",
         stop: function( event, ui ) {
-			ui.position.top = ui.position.top - relativePos.top;
+
+			      ui.position.top = ui.position.top - relativePos.top;
             ui.position.left = ui.position.left - relativePos.left;
             changeInputs(ui.position);
         } 
@@ -148,6 +153,10 @@
         maxY = cMaxY - $('.loaded__watermark').height(),
         max = [maxX, maxY],
         ids = ['#spinnerX', '#spinnerY'];
+
+    console.log(cMaxX);
+    console.log(cMaxY);
+    console.log(max);
 
     ids.forEach(function (item, i) {
       $(item).spinner({
@@ -173,6 +182,7 @@
           $(this).data('onInputPrevented', e.which === 8 ? true : false);
           });
     })
+    changeInputs({top: 0, left: 0});
   }
 
   
@@ -187,7 +197,7 @@
            * Вызывает imageGrag(), initSpinner() 
            */
               $('.loaded__watermark').load(function() {
-              relativePos = $('.loaded__image').position();
+              
               imageHandling.onReset();
 
               imageDrag();
@@ -206,9 +216,15 @@
             left: 0,
             top: 0
           };
+          if ($('.loaded__watermark').attr('src')) {
+          relativePos = $('.loaded__image').position();
           changePosition(pos);
-          $('.canvas__item').removeClass('canvas__item_active');
-          $('#left-top').addClass('canvas__item_active');
+          $('.position__link').removeClass('position__link_active');
+          $('#left-top').addClass('position__link_active');
+          initSpinner();
+          
+          
+          }
         }
 
     };
