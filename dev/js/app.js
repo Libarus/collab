@@ -154,6 +154,10 @@
         max = [maxX, maxY],
         ids = ['#spinnerX', '#spinnerY'];
 
+    //con sole.log(cMaxX);
+    //con sole.log(cMaxY);
+    //con sole.log(max);
+
     ids.forEach(function (item, i) {
       $(item).spinner({
       min: 0,
@@ -178,6 +182,7 @@
           $(this).data('onInputPrevented', e.which === 8 ? true : false);
           });
     })
+    changeInputs({top: 0, left: 0});
   }
 
   
@@ -192,7 +197,7 @@
            * Вызывает imageGrag(), initSpinner() 
            */
               $('.loaded__watermark').load(function() {
-              relativePos = $('.loaded__image').position();
+              
               imageHandling.onReset();
 
               imageDrag();
@@ -211,9 +216,19 @@
             left: 0,
             top: 0
           };
+          if ($('.loaded__watermark').attr('src')) {
+          relativePos = $('.loaded__image').position();
           changePosition(pos);
-          $('.canvas__item').removeClass('canvas__item_active');
-          $('#left-top').addClass('canvas__item_active');
+          $('.position__link').removeClass('position__link_active');
+          $('#left-top').addClass('position__link_active');
+          initSpinner();
+          
+          
+          }
+        },
+
+        setDrag : function () {
+          imageDrag();
         }
 
     };

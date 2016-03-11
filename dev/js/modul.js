@@ -21,6 +21,7 @@ var myModule = (function () {
             $('.download-background__text').text(imgFirst.url).appendTo('.download-background__text');
             console.log(imgFirst.url);
             $('.loaded__image').attr('src', imgFirst.url);
+            $('#watermark__image_BG').attr('src', imgFirst.url);
             $('.download-watermark__file').removeAttr('disabled');
         }
     });
@@ -35,6 +36,7 @@ var myModule = (function () {
             $('download-watermark__text').text(imgSecond.url).appendTo('download-watermark__text');
             console.log(imgSecond.url);
             $(".loaded__watermark").attr("src", imgSecond.url);
+            $('.watermark__tiling_image').attr("src", imgSecond.url);
             $('[disabled]').removeAttr('disabled');
         }
     });

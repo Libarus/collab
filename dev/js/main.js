@@ -14,13 +14,6 @@ $(function() {
   });
 });
 
-//
-function acceptOpacityWaterMark() {
-  var opacityValue = $('.slider-result-hidden').val() * 0.01;
-  $('.loaded__watermark').css('opacity', opacityValue);
-  setTimeout(acceptOpacityWaterMark,100);
-}
-
 // Слайдер
 $(function() {
   $( "#slider" ).slider({
@@ -35,6 +28,7 @@ $(function() {
                     $('.slider-result-hidden').val(ui.value);
                     var opacityValue = ui.value * 0.01;
                     $('.loaded__watermark').css('opacity', opacityValue);
+                    $('.watermark__tiling_box').css('opacity', opacityValue);
                 },
   });
   $('.slider-result-hidden').val(100);
@@ -65,7 +59,10 @@ $(function() {
                           my: 'center center',
                           at: 'center center',
                       });
+                    imageHandling.onReset();
+                    $(".disable__watermark").hide();
                 });
+                
             }).change();// .change() в конце для того чтобы событие сработало при обновлении страницы
 
  };
@@ -82,6 +79,9 @@ $(function() {
                 text = text.replace("C:\\fakepath\\", "");
                 $('.download-watermark__text').val(text);
                 imageHandling.imageLoad();
+                $('.loaded__watermark').load(function() {
+                  $(".disable__interface").hide();
+                });
             }).change();// .change() в конце для того чтобы событие сработало при обновлении страницы
 
  };
@@ -112,16 +112,23 @@ function _change($this){
   switchSingleActive = 'switch__link_single_active';
 
   switchTile.on('click', function(event) {
-    event.preventDefault();
-    if (!switchTile.hasClass(switchTileActive)) {
-      switchTile.addClass(switchTileActive);
-      switchSingle.removeClass(switchSingleActive);
-    }
+      // включаем режим замощения
+      event.preventDefault();
+      if (!switchTile.hasClass(switchTileActive)) {
+          switchTile.addClass(switchTileActive);
+          switchSingle.removeClass(switchSingleActive);
+      }
+      setTimeout(function(){$('.watermark__tiling_box').css('opacity', $('.slider-result-hidden').val()*0.01); },10);
   });
   switchSingle.on('click', function(event) {
-    event.preventDefault();
-    if (!switchSingle.hasClass(switchSingleActive)) {
-      switchSingle.addClass(switchSingleActive);
-      switchTile.removeClass(switchTileActive);
-    }
+      // включаем режим 9 зон
+      event.preventDefault();
+      if (!switchSingle.hasClass(switchSingleActive)) {
+          switchSingle.addClass(switchSingleActive);
+          switchTile.removeClass(switchTileActive);
+      }
+      setTimeout(function(){
+        $('.loaded__watermark').css('opacity', $('.slider-result-hidden').val()*0.01);
+        imageHandling.setDrag();
+      },100);
   });

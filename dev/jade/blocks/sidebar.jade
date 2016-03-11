@@ -12,6 +12,7 @@ aside.canvas-sidebar
 						.settings-title-input.lang(data-key="settingstitleinputWM") ###
 						input.download-watermark__text.download-input-text(type='text', placeholder='Image.png' readonly)
 					input.download-watermark__file.input-file(type='file' name='files[]' data-url='server/php/' disabled)
+					.disable__watermark
 					.arrow_box
 			li.form__item.form__position
 				.wrap-item-settings
@@ -27,23 +28,23 @@ aside.canvas-sidebar
 							.vertical-line
 							.horizontal-line
 							li.position__item
-								a(href="#" id="left top").position__link.position__link_active
+								a(href="#" id="left-top").position__link.position__link_active
 							li.position__item
-								a(href="#" id="center top").position__link
+								a(href="#" id="center-top").position__link
 							li.position__item
-								a(href="#" id="right top").position__link
+								a(href="#" id="right-top").position__link
 							li.position__item
-								a(href="#" id="left center").position__link
+								a(href="#" id="left-center").position__link
 							li.position__item
-								a(href="#" id="center center").position__link
+								a(href="#" id="center-center").position__link
 							li.position__item
-								a(href="#" id="right center").position__link
+								a(href="#" id="right-center").position__link
 							li.position__item
-								a(href="#" id="left bottom").position__link
+								a(href="#" id="left-bottom").position__link
 							li.position__item
-								a(href="#" id="center bottom").position__link
+								a(href="#" id="center-bottom").position__link
 							li.position__item
-								a(href="#" id="right bottom").position__link
+								a(href="#" id="right-bottom").position__link
 						.position__inputs
 							.coordinat
 								label(for='spinnerX').coordinat__label X
@@ -67,6 +68,7 @@ aside.canvas-sidebar
 			.form__buttons
 				button(type="reset", data-key="buttonreset").button.button__reset.lang ###
 				button(type="submit", data-key="buttonsubmit").button.button__submit.lang ###
+			.disable__interface
 
 
 

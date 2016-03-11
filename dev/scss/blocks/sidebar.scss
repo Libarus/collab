@@ -439,3 +439,21 @@
 	display: none;
 }
 
+.disable__watermark {
+	width: 220px;
+    height: 55px;
+    background-color: #f1f1f5;
+    margin-top: -75px;
+    z-index: 20;
+    position: relative;
+    opacity: .9;
+}
+.disable__interface {
+	width: 260px;
+    height: 410px;
+    background-color: #f1f1f5;
+    margin-top: -405px;
+    z-index: 20;
+    position: relative;
+    opacity: .9;
+}
