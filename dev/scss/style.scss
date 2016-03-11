@@ -1,23 +1,12 @@
 @charset "UTF-8";
-@import "options/vars.scss";
+@import "options/vars.scss"; /*Файл с переменными*/
+@import "options/mixins.scss"; /*Файл с миксинами*/
+@import "options/adjustment.scss"; /*Файл с общими стилями*/
+// SCSS Файлы для блоков страницы
+@import "blocks/canvas.scss";
+@import "blocks/sidebar.scss";
+@import "blocks/social-lang.scss";
+@import "blocks/footer.scss";
 
-/* @import "file_name.scss"; */ /* подключение файла scss */
 
-* { box-sizing: border-box; }
-
-body{
-}
-
-.clearfix:before, .clearfix:after { content: " "; display: table; }
-.clearfix:after { clear: both; }
-
-/* прижатие подвала к низу */
-html, body { height: 100%; }
-.main { min-height: 100%; }
-* html .main { height: 100%; }
-.hFooter { height: 220px; /* высота подвала */ }
-.footer {
-    height: 220px; /* высота подвала */
-    margin-top: -220px; /* высота подвала, но с минусом */
-}
 

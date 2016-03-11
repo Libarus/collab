@@ -1,0 +1,48 @@
+.canvas-content {
+	float:left;
+	width: 700px;
+	height:670px;
+	padding: 15px 25px 20px 25px;
+	box-sizing: border-box;
+	background: url('../images/background-canvas-pt.jpg');
+	background-size: cover;
+  &__header{
+		color: $white;
+		line-height: 46px;
+		font-size: 36px;
+		font-weight: normal;
+		margin: 0 0 50px 0;
+		max-width: 650px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-family: "SegoeUILight";
+  }
+}
+.canvas-content__wrapper {
+  width: 650px;
+  height: 535px;
+  background: url(../images/winbg.png);
+  position: relative;
+}
+//=====================================================
+.canvas-content__wrapper{
+	text-align: center;
+}
+.watermark__box-img {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  max-width: 100%;
+  max-height: 100%; }
+
+.watermark__image_BG {
+  display: block;
+  margin: auto; }
+
+.watermark__tiling_box {
+  position: absolute;
+  top: 0;
+}
+.watermark__tiling_image {
+  display: block;
+  float: left; }
