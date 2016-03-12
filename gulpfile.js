@@ -90,6 +90,8 @@ gulp.task('copy',function () {
         .pipe(gulp.dest('app/server'));
     gulp.src('dev/.htaccess')
         .pipe(gulp.dest('app'));
+    gulp.src('dev/favicon.ico')
+        .pipe(gulp.dest('app'));
 });
 
 gulp.task('default',['jade', 'sass', 'sprite', 'sprites_social', 'fonts', 'js', 'images', 'copy']);
