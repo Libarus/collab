@@ -42,3 +42,18 @@ ul{
 	margin-top: -40px;	
 	min-width: 960px;
 }
+
+#popupwin {
+	display: none;
+	width: 300px;
+	height: 100px;
+	background-color: white;
+	border-radius: 5px;
+	padding: 0 10px;
+
+	.close {
+		text-align: right;
+		color: red;
+		cursor: pointer;
+	}
+}

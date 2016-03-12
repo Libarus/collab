@@ -93,9 +93,13 @@ $(function(){
         var waterBoxOffsetRight = watermarkBoxImg.offset().left;
         var waterBoxOffsetBottom = watermarkBoxImg.offset().top;
         tilingBox.draggable({
-          containment:[waterBoxOffsetLeft,waterBoxOffsetTop,waterBoxOffsetRight,waterBoxOffsetBottom]
+          containment:[waterBoxOffsetLeft,waterBoxOffsetTop,waterBoxOffsetRight,waterBoxOffsetBottom],
+          stop: function( event, ui ) {
+            //console.log(ui);
+            $("#spinnerX").val(ui.position.left);
+            $("#spinnerY").val(ui.position.top);
+          } 
         });
-
       }
 
 

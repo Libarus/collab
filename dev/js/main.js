@@ -14,8 +14,9 @@ $(function() {
   });
 });
 
-// Слайдер
 $(function() {
+
+  // Слайдер
   $( "#slider" ).slider({
       range: "min",
       min: 1,
@@ -32,6 +33,24 @@ $(function() {
                 },
   });
   $('.slider-result-hidden').val(100);
+
+  // Социальные кнопки
+  function openSocial(url,name) {
+    window.open(url,name,'width=600,height=400,scrollbars=no,menubar=nu,toolbar=no,resizable=no,status=no,location=no');
+  }
+  $(".social-button__link_vk").on('click',function () {
+    openSocial('http://vkontakte.ru/share.php?url=http://wmg.1btn.ru/','vk');
+  });
+  $(".social-button__link_tw").on('click',function () {
+    openSocial('http://twitter.com/share?url=http://wmg.1btn.ru/','tw');
+  });
+  $(".social-button__link_fb").on('click',function () {
+    openSocial('http://www.facebook.com/share.php?p[url]=http://wmg.1btn.ru/','fb');
+  });
+
+  $("#popupwin .close").on('click',function () {
+    $("#popupwin").bPopup().close();
+  })
 
 });
 // Код для скрытых инпутов типа файл, и текстовых инпутов
@@ -61,6 +80,8 @@ $(function() {
                       });
                     imageHandling.onReset();
                     $(".disable__watermark").hide();
+                    $(".disable__interface").addClass("lang");
+                    $(".disable__interface").text(langData['loadwm'][$("#language_type").val()]);
                 });
                 
             }).change();// .change() в конце для того чтобы событие сработало при обновлении страницы
@@ -118,7 +139,10 @@ function _change($this){
           switchTile.addClass(switchTileActive);
           switchSingle.removeClass(switchSingleActive);
       }
-      setTimeout(function(){$('.watermark__tiling_box').css('opacity', $('.slider-result-hidden').val()*0.01); },10);
+      $("#switch_item_type").val("tile");
+      setTimeout(function(){
+        $('.watermark__tiling_box').css('opacity', $('.slider-result-hidden').val()*0.01);
+      },10);
   });
   switchSingle.on('click', function(event) {
       // включаем режим 9 зон
@@ -127,8 +151,10 @@ function _change($this){
           switchSingle.addClass(switchSingleActive);
           switchTile.removeClass(switchTileActive);
       }
+      $("#switch_item_type").val("single");
       setTimeout(function(){
         $('.loaded__watermark').css('opacity', $('.slider-result-hidden').val()*0.01);
         imageHandling.setDrag();
       },100);
   });
+
