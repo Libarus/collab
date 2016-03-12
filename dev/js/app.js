@@ -25,7 +25,7 @@
      * значения инпутов обнуляются.
      */
     $('.position__link').on('click', onChangeCorner);
-    $('#spinnerY, #spinnerX').on('spinstop spinchange', onChangeSpinner);
+    $('#spinnerY, #spinnerX').on('spinstop spinchange spin', onChangeSpinner);
     $('.button__reset').on('click', imageHandling.onReset);
   }
 
@@ -60,7 +60,7 @@
           my: markPos[0] + ' ' + markPos[1],
           at: markPos[0] + ' ' + markPos[1],
           using: function(css, calc) {
-              $(this).stop(true).animate(css, 200, "linear");
+              $(this).stop(true).animate(css, 0, "linear");
 
       			  css.top = css.top - relativePos.top;
               css.left = css.left - relativePos.left;
@@ -97,7 +97,7 @@
         my: 'left top',
         at: 'left+' + leftValue + ' top+' + topValue,
         using: function(css, calc) {
-            $(this).stop(true).animate(css, 200, "linear");
+            $(this).stop(true).animate(css, 0, "linear");
         }
     });
   }
@@ -114,7 +114,7 @@
         my: 'left top',
         at: 'left+' + posObject.left + ' top+' + posObject.top,
         using: function(css, calc) {
-            $(this).stop(true).animate(css, 200, "linear");
+            $(this).stop(true).animate(css, 0, "linear");
 
       			css.top = css.top - relativePos.top;
             css.left = css.left - relativePos.left;
@@ -213,17 +213,17 @@
          * Вызывает changePosition()
          */
           var pos = {
-            left: 0,
-            top: 0
+            left: saveSpinnerX,
+            top: saveSpinnerY
           };
           if ($('.loaded__watermark').attr('src')) {
-          relativePos = $('.loaded__image').position();
-          changePosition(pos);
-          $('.position__link').removeClass('position__link_active');
-          $('#left-top').addClass('position__link_active');
-          initSpinner();
-          
-          
+            relativePos = $('.loaded__image').position();
+            changePosition(pos);
+            $('.position__link').removeClass('position__link_active');
+            $('#left-top').addClass('position__link_active');
+            initSpinner();
+            $("#spinnerX").val(saveSpinnerX);
+            $("#spinnerY").val(saveSpinnerY);
           }
         },
 

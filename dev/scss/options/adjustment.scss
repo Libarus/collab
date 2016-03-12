@@ -57,3 +57,27 @@ ul{
 		cursor: pointer;
 	}
 }
+
+.loaded__watermark,
+.watermark__box-img {
+  cursor: move;
+}
+
+.canvas-content__header,
+.canvas-sidebar__header,
+.settings-title-input,
+.settings-title {
+	white-space: nowrap;
+}
+
+.opacity_text,
+.position_text {
+	width:220px;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+
+.position_text {
+	width:160px;
+}

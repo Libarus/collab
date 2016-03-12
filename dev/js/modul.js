@@ -58,15 +58,19 @@ var myModule = (function () {
 
                     } else {
                         // аякс-запрос на масштабирование картинки
-                        var imgSecond_url = '';
+                        var imgSecond_url = '',
+                            postData = {'bg':$("#img_background").val(),
+                                        'sizebg':$('.loaded__image').width(),
+                                        'wm':imgSecond.url};
+                        console.log(postData);
+                        
                         $.ajax({
                             url:'/server/resizewm.php',
                             dataType: 'json',
                             type: 'post',
-                            data: {'bg':$("#img_background").val(),
-                                   'sizebg':$('.loaded__image').width(),
-                                   'wm':imgSecond.url},
+                            data: postData,
                             success: function (data) {
+                                console.log(data);
                                 imgSecond_url = data.url;
                                 console.log(imgSecond_url);
                                 $('download-watermark__text').text(imgSecond_url).appendTo('download-watermark__text');

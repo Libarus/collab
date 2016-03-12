@@ -14,6 +14,14 @@ $(function() {
   });
 });
 
+var saveSpinnerX = 0,
+    saveSpinnerY = 0,
+    saveSpinnerXTile = 0,
+    saveSpinnerYTile = 0,
+    saveSpinnerHorTile = 0,
+    saveSpinnerVerTile = 0;
+
+
 $(function() {
 
   // Слайдер
@@ -50,6 +58,15 @@ $(function() {
 
   $("#popupwin .close").on('click',function () {
     $("#popupwin").bPopup().close();
+  });
+
+  $(".button__reset").on('click',function () {
+    saveSpinnerX = 0,
+    saveSpinnerY = 0,
+    saveSpinnerXTile = 0,
+    saveSpinnerYTile = 0,
+    saveSpinnerHorTile = 0,
+    saveSpinnerVerTile = 0;
   })
 
 });
@@ -114,7 +131,7 @@ $(function() {
     _change($(this));
  }
  previosClass = '';
-function _change($this){
+function _change($this) {
 
   item = $this.closest('.switch__link'),
   itemClass = item.attr('class'),
@@ -124,7 +141,8 @@ function _change($this){
   classOfViewState = prefix + view; 
   if (previosClass == '') {
     previosClass = views.attr('class');
-  } views.attr('class', previosClass+ ' ' +classOfViewState);
+  }
+  views.attr('class', previosClass+ ' ' +classOfViewState);
 } 
 
   switchTile = $('.switch__link_tile');
@@ -133,6 +151,8 @@ function _change($this){
   switchSingleActive = 'switch__link_single_active';
 
   switchTile.on('click', function(event) {
+      saveSpinnerX = $("#spinnerX").val();
+      saveSpinnerY = $("#spinnerY").val();
       // включаем режим замощения
       event.preventDefault();
       if (!switchTile.hasClass(switchTileActive)) {
@@ -145,6 +165,10 @@ function _change($this){
       },10);
   });
   switchSingle.on('click', function(event) {
+      saveSpinnerXTile = $("#spinnerX").val();
+      saveSpinnerYTile = $("#spinnerY").val();
+      saveSpinnerHorTile = $("#spinnerHor").val();
+      saveSpinnerVerTile = $("#spinnerVert").val();
       // включаем режим 9 зон
       event.preventDefault();
       if (!switchSingle.hasClass(switchSingleActive)) {

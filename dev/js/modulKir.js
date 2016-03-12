@@ -101,28 +101,48 @@ $(function(){
           } 
         });
       }
+      
+      function horSpinChage($this,value) {
+          tilingBox.width(($('.watermark__tiling_image').width() + $this.val()) * quantityTilingX);
+          $('.watermark__tiling_image').css('margin-right', value +'px');
+          dragg();
+          $('.vertical-line').width(value);
+      }
+      function verSpinChage($this,value) {
+          tilingBox.height(($('.watermark__tiling_image').height() + $this.val()) * quantityTilingY);
+          $('.watermark__tiling_image').css('margin-bottom', value +'px');
+          dragg();
+          $('.horizontal-line').height(value);
+      }
 
-
-
+      var minmin = 0,
+          maxmax = 100;
       $('#spinnerHor').spinner({
+          min: minmin,
+          max: maxmax,
           spin: function(event, ui) {
             var thisValue = $(this).val();
-            tilingBox.width(($('.watermark__tiling_image').width() + 1 + +$(this).val()) * quantityTilingX);
-            $('.watermark__tiling_image').css('margin-right', thisValue +'px');
-            dragg();
-            $('.vertical-line').width(thisValue);
+            horSpinChage($(this), thisValue);
           }
+      }).on('input', function () {
+          var val = this.value;
+          if (!val.match(/^[+-]?[\d]{0,}$/)) val = 0;
+          this.value = val > maxmax ? maxmax : val < minmin ? minmin : val;
+          horSpinChage($(this), this.value);
       });
 
       $('#spinnerVert').spinner({
           spin: function(event, ui) {
             var thisValue = $(this).val();
-            tilingBox.height(($('.watermark__tiling_image').height() + 1 + +$(this).val()) * quantityTilingY);
-            $('.watermark__tiling_image').css('margin-bottom', thisValue +'px');
-            dragg();
-            $('.horizontal-line').height(thisValue);
+            verSpinChage($(this), thisValue);
           }
+      }).on('input', function () {
+          var val = this.value;
+          if (!val.match(/^[+-]?[\d]{0,}$/)) val = 0;
+          this.value = val > maxmax ? maxmax : val < minmin ? minmin : val;
+          verSpinChage($(this), this.value);
       });
+
       $('.watermark__tiling_image').on('load',function(){
         GeneralTiling();
       });
@@ -151,6 +171,12 @@ $('.switch__link').after('<div class="disable"></div>');
 $('.switch__link_tile_active, .switch__link_single_active').siblings('.disable').css('z-index', '99999999');
 
 $('.switch__link').on('click', function(e) {
+
+      $("#spinnerX").val(saveSpinnerXTile);
+      $("#spinnerY").val(saveSpinnerYTile);
+      $("#spinnerHor").val(saveSpinnerHorTile);
+      $("#spinnerVert").val(saveSpinnerVerTile);
+
   var target = e.target;
   $(target).siblings('.disable').css('z-index', '99999999');
   $(target).closest('.switch__item').siblings('.switch__item').find('.disable').css('z-index', '-1');
@@ -171,6 +197,7 @@ $('.switch__link').on('click', function(e) {
     $('.loaded__watermark').attr('src', tilingURL);
     imageHandling.onReset();
   }
+
 });
 
 

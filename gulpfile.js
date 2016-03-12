@@ -3,20 +3,33 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     spritesmith = require('gulp.spritesmith');
 
-var paths = {
+var apppath = 'app',
+    paths = {
     src: {
         dev:'dev/**/*.*',
         jade:'dev/jade/*.jade',
         scss:'dev/scss/style.scss',
         sprites: 'dev/sprites/*.png',
-        sprites_social: 'dev/sprites_social/*.png'
+        sprites_social: 'dev/sprites_social/*.png',
+        js: 'dev/js/**/*.*',
+        fonts: 'dev/fonts/**/*.*',
+        images: 'dev/images/**/*.*',
+        cors: 'dev/cors/**/*.*',
+        server: 'dev/server/**/*.*',
+        htaccess: 'dev/.htaccess',
+        favicon: 'dev/favicon.ico'
     },
     dest:{
-        app:'app/',
-        jade:'app/',
-        scss:'app/css/',
-        sprites: 'app/images/sprite',
-        sprites_social: 'app/images/sprites_social'
+        app:apppath + '/',
+        jade:apppath + '/',
+        scss:apppath + '/css/',
+        sprites: apppath + '/images/sprite',
+        sprites_social: apppath + '/images/sprites_social',
+        js: apppath + '/js',
+        fonts: apppath + '/fonts',
+        images: apppath + '/images',
+        cors: apppath + '/cors',
+        server: apppath + '/server'
     }
 };
 
@@ -62,20 +75,20 @@ gulp.task('sprites_social', function () {
 
 // -------------------Js---------------------------
 gulp.task('js', function() {
-  gulp.src('dev/js/*')
-    .pipe(gulp.dest('app/js/'))
+  gulp.src(paths.src.js)
+    .pipe(gulp.dest(paths.dest.js));
 });
 
 //--------------------Шрифты----------------------
 gulp.task('fonts', function() {
-  gulp.src('dev/fonts/*')
-    .pipe(gulp.dest('app/fonts/'))
+  gulp.src(paths.src.fonts)
+    .pipe(gulp.dest(paths.dest.fonts))
 });
 
-//Картинки
+//--------------------Картинки----------------------
 gulp.task('images', function () {
-  return gulp.src('dev/images/**/*')
-  .pipe(gulp.dest('app/images'));
+  gulp.src(paths.src.images)
+    .pipe(gulp.dest(paths.dest.images));
 });
 
 gulp.task('watch',function () {
@@ -84,14 +97,14 @@ gulp.task('watch',function () {
 
 // копирование нужных файлов
 gulp.task('copy',function () {
-    gulp.src('dev/cors/**/*.*')
-        .pipe(gulp.dest('app/cors'));
-    gulp.src('dev/server/**/*.*')
-        .pipe(gulp.dest('app/server'));
-    gulp.src('dev/.htaccess')
-        .pipe(gulp.dest('app'));
-    gulp.src('dev/favicon.ico')
-        .pipe(gulp.dest('app'));
+    gulp.src(paths.src.cors)
+        .pipe(gulp.dest(paths.dest.cors));
+    gulp.src(paths.src.server)
+        .pipe(gulp.dest(paths.dest.server));
+    gulp.src(paths.src.htaccess)
+        .pipe(gulp.dest(paths.dest.app));
+    gulp.src(paths.src.favicon)
+        .pipe(gulp.dest(paths.dest.app));
 });
 
 gulp.task('default',['jade', 'sass', 'sprite', 'sprites_social', 'fonts', 'js', 'images', 'copy']);
