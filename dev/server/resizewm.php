@@ -12,7 +12,8 @@ $dir = 'cache';
 if (!file_exists($dir)) mkdir($dir);
 
 $bg = $_POST['bg'];
-$sizebg = $_POST['sizebg'];
+$widthbg = $_POST['widthbg'];
+$heightbg = $_POST['heightbg'];
 $wm = $_POST['wm'];
 
 $imgbg = getimagesize($bg);
@@ -24,9 +25,9 @@ $height = $imgbg[1];
 $widthwm = $imgwm[0];
 $heightwm = $imgwm[1];
 
-if ($widthwm > $width || $heightwm > $height) {
+if ($widthwm > $widthbg || $heightwm > $heightbg) {
 
-    GetImgResize($widthwm, $heightwm, $width, $height, $gx, $gy);
+    GetImgResize($widthwm, $heightwm, $widthbg, $heightbg, $gx, $gy);
 
     $mime = $imgwm['mime'];
     if ($mime == 'image/jpeg') { 
@@ -50,9 +51,9 @@ if ($widthwm > $width || $heightwm > $height) {
 
 } else {
 
-    //echo $width.' x '.$sizebg;
+    //echo $width.' x '.$widthbg;
 
-    $ratio = $width / $sizebg;
+    $ratio = $width / $widthbg;
 
     $w = $imgwm[0]; $wr = $w / $ratio;
     $h = $imgwm[1]; $hr = $h / $ratio;

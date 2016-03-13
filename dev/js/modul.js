@@ -35,6 +35,8 @@ var myModule = (function () {
                         $('#watermark__image_BG').attr('src', imgFirst.url);
                         $('.download-watermark__file').removeAttr('disabled');
                         $("#img_background").val(imgFirst.url);
+                        maxWidthBackground = $('#watermark__image_BG').width();
+                        maxHeightBackground = $('#watermark__image_BG').height();
                     }
                 }
             });
@@ -60,7 +62,8 @@ var myModule = (function () {
                         // аякс-запрос на масштабирование картинки
                         var imgSecond_url = '',
                             postData = {'bg':$("#img_background").val(),
-                                        'sizebg':$('.loaded__image').width(),
+                                        'widthbg':maxWidthBackground,
+                                        'heightbg':maxHeightBackground,
                                         'wm':imgSecond.url};
                         console.log(postData);
                         

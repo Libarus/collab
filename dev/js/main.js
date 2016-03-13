@@ -19,7 +19,9 @@ var saveSpinnerX = 0,
     saveSpinnerXTile = 0,
     saveSpinnerYTile = 0,
     saveSpinnerHorTile = 0,
-    saveSpinnerVerTile = 0;
+    saveSpinnerVerTile = 0,
+    maxWidthBackground = 0,
+    maxHeightBackground = 0;
 
 
 $(function() {
@@ -99,6 +101,8 @@ $(function() {
                     $(".disable__watermark").hide();
                     $(".disable__interface").addClass("lang");
                     $(".disable__interface").text(langData['loadwm'][$("#language_type").val()]);
+                    maxWidthBackground = $('.loaded__image').width();
+                    maxHeightBackground = $('.loaded__image').height();
                 });
                 
             }).change();// .change() в конце для того чтобы событие сработало при обновлении страницы
