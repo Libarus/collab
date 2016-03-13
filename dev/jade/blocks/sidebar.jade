@@ -1,92 +1,81 @@
 aside.canvas-sidebar
-	h2.canvas-sidebar__header Настройки
-	form.form(action="#")
+	h2.canvas-sidebar__header.lang(data-key="canvassidebarheader") ###
+	form.form(action="/server/wm.php", target="_blank", method="post")
+		input#language_type(name="language_type", type="hidden", value="rus")
+		input#ratio(name="ratio", type="hidden")
 		ul.form__list
 			li.form__item.form__download-images
 				.wrap-item-settings
+					input#img_background(name="img_background", type="hidden")
+					input#img_watermark(name="img_watermark", type="hidden")
 					label.download-background 
-						.settings-title-input Исходное изображение
+						.settings-title-input.lang(data-key="settingstitleinputSRC") ###
 						input.download-background__text.download-input-text(type='text', placeholder='Image.jpg' readonly)
-					input.download-background__file.input-file(type='file' name='files[]' data-url='server/php/')
+					input.download-background__file.input-file(type='file' name='files[]' data-url='server/php/' accept="image/jpeg,image/png")
 					label.download-watermark 
-						.settings-title-input Водяной знак
+						.settings-title-input.lang(data-key="settingstitleinputWM") ###
 						input.download-watermark__text.download-input-text(type='text', placeholder='Image.png' readonly)
-					input.download-watermark__file.input-file(type='file' name='files[]' data-url='server/php/' disabled)
+					input.download-watermark__file.input-file(type='file' name='files[]' data-url='server/php/' disabled accept="image/jpeg,image/png")
+					.disable__watermark.lang(data-key="loadbg") Для начала генерации водяного знака, пожалуйста, выберите исходное изображение. Только jpg или png
 					.arrow_box
 			li.form__item.form__position
 				.wrap-item-settings
-					.switch.settings-title Положение
+					.switch.settings-title
+						.position_text.lang(data-key="switchsettingstitle") ###
+					input#switch_item_type(name="switch_item_type", type='hidden', value="single")
 					ul.switch__list
 						li.switch__item
-							a(href="#").switch__link_tile
+							a(href="#" data-view="tile").switch__link.switch__link_tile
 						li.switch__item
-							a(href="#").switch__link_single.switch__link_single_active
-					//- Cпособ отображение 9 зон
-					//- .position
-					//- 	ul.position__list
-					//- 		li.position__item
-					//- 			a(href="#").position__link.position__link_active
-					//- 		li.position__item
-					//- 			a(href="#").position__link
-					//- 		li.position__item
-					//- 			a(href="#").position__link
-					//- 		li.position__item
-					//- 			a(href="#").position__link
-					//- 		li.position__item
-					//- 			a(href="#").position__link
-					//- 		li.position__item
-					//- 			a(href="#").position__link
-					//- 		li.position__item
-					//- 			a(href="#").position__link
-					//- 		li.position__item
-					//- 			a(href="#").position__link
-					//- 		li.position__item
-					//- 			a(href="#").position__link
-					//- 	.position__inputs
-					//- 		.coordinat
-					//- 			label(for='spinner').coordinat__label X
-					//- 			input#spinnerX(name='value' placeholder='0')
-					//- 		.coordinat
-					//- 			label(for='spinner').coordinat__label Y
-					//- 			input#spinnerY(name='value' placeholder='0')
-					//- Способ отображения Замощение
-					.position.position_tile
+							a(href="#" data-view="single").switch__link.switch__link_single.switch__link_single_active
+					//- Смена видов
+					.position#views
 						ul.position__list
 							.vertical-line
 							.horizontal-line
 							li.position__item
-								a(href="#").position__link
+								a(href="#" id="left-top").position__link.position__link_active
 							li.position__item
-								a(href="#").position__link
+								a(href="#" id="center-top").position__link
 							li.position__item
-								a(href="#").position__link
+								a(href="#" id="right-top").position__link
 							li.position__item
-								a(href="#").position__link
+								a(href="#" id="left-center").position__link
 							li.position__item
-								a(href="#").position__link
+								a(href="#" id="center-center").position__link
 							li.position__item
-								a(href="#").position__link
+								a(href="#" id="right-center").position__link
 							li.position__item
-								a(href="#").position__link
+								a(href="#" id="left-bottom").position__link
 							li.position__item
-								a(href="#").position__link
+								a(href="#" id="center-bottom").position__link
 							li.position__item
-								a(href="#").position__link
+								a(href="#" id="right-bottom").position__link
 						.position__inputs
 							.coordinat
-								label(for='spinner').coordinat__label_vert
-								input#spinnerVert(name='value' placeholder='0')
+								label(for='spinnerX').coordinat__label X
+								input#spinnerX(name='spinnerX' placeholder='0')
 							.coordinat
-								label(for='spinner').coordinat__label_hor 
-								input#spinnerHor(name='value' placeholder='0')
+								label(for='spinnerY').coordinat__label Y
+								input#spinnerY(name='spinnerY' placeholder='0')
+							.coordinat.coordinat-tile
+								label(for='spinnerVert').coordinat__label_vert
+								input#spinnerVert(name='spinnerVert' placeholder='0')
+							.coordinat.coordinat-tile
+								label(for='spinnerHor').coordinat__label_hor 
+								input#spinnerHor(name='spinnerHor' placeholder='0')
 			li.form__item.form__opacity
 				.wrap-item-settings
-					.settings-title Прозрачность
+					.settings-title
+						.opacity_text.lang(data-key="opacity") ###
 					.slider-content
 						#slider
+					.slider-result
+						input.slider-result-hidden#opacity(name="opacity", type='hidden')
 			.form__buttons
-				input(type="reset" value="Сброс").button.button__reset
-				input(type="submit" value="Скачать").button.button__submit
+				button(type="reset", data-key="buttonreset").button.button__reset.lang ###
+				button(type="submit", data-key="buttonsubmit").button.button__submit.lang ###
+			.disable__interface(data-key="loadwm")
 
 
 
