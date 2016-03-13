@@ -60,7 +60,7 @@ var myModule = (function () {
                         // аякс-запрос на масштабирование картинки
                         var imgSecond_url = '',
                             postData = {'bg':$("#img_background").val(),
-                                        'sizebg':$('.loaded__image').width(),
+                                        'sizebg':maxWidthBackground, //$('.loaded__image').width(),
                                         'wm':imgSecond.url};
                         console.log(postData);
                         

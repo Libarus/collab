@@ -18,16 +18,27 @@
 		font-family: "SegoeUILight";
   }
 }
-.canvas-content__wrapper {
+.canvas-content__wrapper,
+.canvas-content__tiling {
   width: 650px;
   height: 535px;
   background: url(../images/winbg.png);
   position: relative;
 }
 //=====================================================
-.canvas-content__wrapper{
+.canvas-content__wrapper,
+.canvas-content__tiling{
 	text-align: center;
 }
+
+.canvas__watermark-tiling {
+    overflow: hidden;
+}
+
+.canvas-content__tiling {
+    display: none;
+}
+
 .watermark__box-img {
   position: relative;
   overflow: hidden;

@@ -19,8 +19,8 @@ var saveSpinnerX = 0,
     saveSpinnerXTile = 0,
     saveSpinnerYTile = 0,
     saveSpinnerHorTile = 0,
-    saveSpinnerVerTile = 0;
-
+    saveSpinnerVerTile = 0,
+    maxWidthBackground = 0;
 
 $(function() {
 
@@ -99,6 +99,7 @@ $(function() {
                     $(".disable__watermark").hide();
                     $(".disable__interface").addClass("lang");
                     $(".disable__interface").text(langData['loadwm'][$("#language_type").val()]);
+                    maxWidthBackground = $('.loaded__image').width();
                 });
                 
             }).change();// .change() в конце для того чтобы событие сработало при обновлении страницы
@@ -160,11 +161,18 @@ function _change($this) {
           switchSingle.removeClass(switchSingleActive);
       }
       $("#switch_item_type").val("tile");
+      $(".canvas-content__wrapper").hide();
+      $(".canvas-content__tiling").show();
+      tiling.init();
+      /*
       setTimeout(function(){
         $('.watermark__tiling_box').css('opacity', $('.slider-result-hidden').val()*0.01);
       },10);
+      */
   });
   switchSingle.on('click', function(event) {
+      $(".canvas-content__tiling").hide();
+      $(".canvas-content__wrapper").show();
       saveSpinnerXTile = $("#spinnerX").val();
       saveSpinnerYTile = $("#spinnerY").val();
       saveSpinnerHorTile = $("#spinnerHor").val();
@@ -176,9 +184,11 @@ function _change($this) {
           switchTile.removeClass(switchTileActive);
       }
       $("#switch_item_type").val("single");
+      /*
       setTimeout(function(){
         $('.loaded__watermark').css('opacity', $('.slider-result-hidden').val()*0.01);
         imageHandling.setDrag();
       },100);
+      */
   });
 

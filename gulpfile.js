@@ -3,7 +3,7 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     spritesmith = require('gulp.spritesmith');
 
-var apppath = 'app',
+var apppath = 'www',
     paths = {
     src: {
         dev:'dev/**/*.*',
