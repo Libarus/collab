@@ -2,14 +2,18 @@
  * Created by Ragnarok on 06.03.2016.
  */
 $(function(){
+  
+  var marginRight = 0;
+  var marginBottom = 0;
+  var nameWatermarkSrc = "";
 
   var singleContent = $('.canvas-content__wrapper').html();
   function GeneralTiling() {
 
       var image = $('#watermark__image_BG');
       var tiling = $('.watermark__tiling_image');
-      var imageURL = $(image).attr('src');
-      var tilingURL = $(tiling).attr('src');
+      var imageURL = image.attr('src');
+      var tilingURL = tiling.attr('src');
       var watermark = $('.canvas-content__wrapper');
       var watermarkWidth = watermark.width();
       var watermarkHeight = watermark.height();
@@ -88,8 +92,8 @@ $(function(){
 
       dragg();
       function dragg(){
-        var waterBoxOffsetLeft = watermarkBoxImg.offset().left - (tilingBox.width() - imageWidthNew);
-        var waterBoxOffsetTop = watermarkBoxImg.offset().top - (tilingBox.height() - imageHeightNew);
+        var waterBoxOffsetLeft = watermarkBoxImg.offset().left - (tilingBox.width() - imageWidthNew) + marginRight;
+        var waterBoxOffsetTop = watermarkBoxImg.offset().top - (tilingBox.height() - imageHeightNew) + marginBottom;
         var waterBoxOffsetRight = watermarkBoxImg.offset().left;
         var waterBoxOffsetBottom = watermarkBoxImg.offset().top;
         tilingBox.draggable({
@@ -102,17 +106,25 @@ $(function(){
         });
       }
       
-      function horSpinChage($this,value) {
-          tilingBox.width(($('.watermark__tiling_image').width() + $this.val()) * quantityTilingX);
+      function horSpinChage(val) {
+          var wi = $('.watermark__tiling_image').width(),
+              value = parseInt(val),
+              tileWidth = wi + value;
+          marginRight = value;
+          tilingBox.width(tileWidth * quantityTilingX);
           $('.watermark__tiling_image').css('margin-right', value +'px');
-          dragg();
           $('.vertical-line').width(value);
-      }
-      function verSpinChage($this,value) {
-          tilingBox.height(($('.watermark__tiling_image').height() + $this.val()) * quantityTilingY);
-          $('.watermark__tiling_image').css('margin-bottom', value +'px');
           dragg();
+      }
+      function verSpinChage(val) {
+          var he = $('.watermark__tiling_image').height(),
+              value = parseInt(val),
+              tileHeight = he + value;
+          marginBottom = value;
+          tilingBox.height(tileHeight * quantityTilingY);
+          $('.watermark__tiling_image').css('margin-bottom', value +'px');
           $('.horizontal-line').height(value);
+          dragg();
       }
 
       var minmin = 0,
@@ -122,32 +134,36 @@ $(function(){
           max: maxmax,
           spin: function(event, ui) {
             var thisValue = $(this).val();
-            horSpinChage($(this), thisValue);
+            horSpinChage(thisValue);
           }
       }).on('input', function () {
           var val = this.value;
           if (!val.match(/^[+-]?[\d]{0,}$/)) val = 0;
           this.value = val > maxmax ? maxmax : val < minmin ? minmin : val;
-          horSpinChage($(this), this.value);
+          horSpinChage(this.value);
       });
 
       $('#spinnerVert').spinner({
           spin: function(event, ui) {
             var thisValue = $(this).val();
-            verSpinChage($(this), thisValue);
+            verSpinChage(thisValue);
           }
       }).on('input', function () {
           var val = this.value;
           if (!val.match(/^[+-]?[\d]{0,}$/)) val = 0;
           this.value = val > maxmax ? maxmax : val < minmin ? minmin : val;
-          verSpinChage($(this), this.value);
+          verSpinChage(this.value);
       });
 
+      function chageWatermark() {
+        if (nameWatermarkSrc != $('.watermark__tiling_image').attr("src")) {
+          GeneralTiling();
+          nameWatermarkSrc = $('.watermark__tiling_image').attr("src");
+        }
+      }
+      setInterval(chageWatermark,50);
+
 }
-
-
-
-
 
 //создаю свою разметку
 function createMarkup() {
@@ -161,8 +177,6 @@ function createMarkup() {
       </div>';
   $('.canvas-content__wrapper').html(Tpl);
 }
-
-
 
 $('.switch__link').after('<div class="disable"></div>');
 $('.switch__link_tile_active, .switch__link_single_active').siblings('.disable').css('z-index', '99999999');
@@ -181,7 +195,7 @@ $('.switch__link').on('click', function(e) {
   if($(target).hasClass('switch__link_tile_active') && $('.loaded__image')){
       createMarkup();//меняю разметку
       GeneralTiling();
-      setTimeout(GeneralTiling,10);
+      //setTimeout(GeneralTiling,10);
       //con sole.log($('#spinnerVert').val());
   } else {
     var imageURL = $('#watermark__image_BG').attr('src');
@@ -197,15 +211,6 @@ $('.switch__link').on('click', function(e) {
   }
 
 });
-
-
-
-
-
-
-
-
-
 
 
 });
