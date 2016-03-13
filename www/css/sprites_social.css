@@ -1,0 +1,59 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+```html
+<!-- `display: block` sprite -->
+<div class="icon-home"></div>
+
+<!-- `display: inline-block` sprite -->
+<img class="icon-home" />
+```
+*/
+.icon-social-like {
+  background-image: url(../images/sprites_social.png);
+  background-position: 0px -314px;
+  width: 26px;
+  height: 32px;
+}
+.icon-social-like_hover {
+  background-image: url(../images/sprites_social.png);
+  background-position: 0px -376px;
+  width: 26px;
+  height: 32px;
+}
+.icon-social_fb {
+  background-image: url(../images/sprites_social.png);
+  background-position: 0px -200px;
+  width: 15px;
+  height: 27px;
+}
+.icon-social_fb_hover {
+  background-image: url(../images/sprites_social.png);
+  background-position: 0px -257px;
+  width: 15px;
+  height: 27px;
+}
+.icon-social_tw {
+  background-image: url(../images/sprites_social.png);
+  background-position: 0px -96px;
+  width: 28px;
+  height: 22px;
+}
+.icon-social_tw_hover {
+  background-image: url(../images/sprites_social.png);
+  background-position: 0px -148px;
+  width: 28px;
+  height: 22px;
+}
+.icon-social_vk {
+  background-image: url(../images/sprites_social.png);
+  background-position: 0px 0px;
+  width: 32px;
+  height: 18px;
+}
+.icon-social_vk_hover {
+  background-image: url(../images/sprites_social.png);
+  background-position: 0px -48px;
+  width: 32px;
+  height: 18px;
+}
