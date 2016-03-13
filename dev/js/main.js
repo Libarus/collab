@@ -14,15 +14,18 @@ $(function() {
   });
 });
 
-//
-function acceptOpacityWaterMark() {
-  var opacityValue = $('.slider-result-hidden').val() * 0.01;
-  $('.loaded__watermark').css('opacity', opacityValue);
-  setTimeout(acceptOpacityWaterMark,100);
-}
+var saveSpinnerX = 0,
+    saveSpinnerY = 0,
+    saveSpinnerXTile = 0,
+    saveSpinnerYTile = 0,
+    saveSpinnerHorTile = 0,
+    saveSpinnerVerTile = 0,
+    maxWidthBackground = 0;
 
-// Слайдер
+
 $(function() {
+
+  // Слайдер
   $( "#slider" ).slider({
       range: "min",
       min: 1,
@@ -35,9 +38,37 @@ $(function() {
                     $('.slider-result-hidden').val(ui.value);
                     var opacityValue = ui.value * 0.01;
                     $('.loaded__watermark').css('opacity', opacityValue);
+                    $('.watermark__tiling_box').css('opacity', opacityValue);
                 },
   });
   $('.slider-result-hidden').val(100);
+
+  // Социальные кнопки
+  function openSocial(url,name) {
+    window.open(url,name,'width=600,height=400,scrollbars=no,menubar=nu,toolbar=no,resizable=no,status=no,location=no');
+  }
+  $(".social-button__link_vk").on('click',function () {
+    openSocial('http://vkontakte.ru/share.php?url=http://wmg.1btn.ru/','vk');
+  });
+  $(".social-button__link_tw").on('click',function () {
+    openSocial('http://twitter.com/share?url=http://wmg.1btn.ru/','tw');
+  });
+  $(".social-button__link_fb").on('click',function () {
+    openSocial('http://www.facebook.com/share.php?p[url]=http://wmg.1btn.ru/','fb');
+  });
+
+  $("#popupwin .close").on('click',function () {
+    $("#popupwin").bPopup().close();
+  });
+
+  $(".button__reset").on('click',function () {
+    saveSpinnerX = 0,
+    saveSpinnerY = 0,
+    saveSpinnerXTile = 0,
+    saveSpinnerYTile = 0,
+    saveSpinnerHorTile = 0,
+    saveSpinnerVerTile = 0;
+  })
 
 });
 // Код для скрытых инпутов типа файл, и текстовых инпутов
@@ -66,8 +97,12 @@ $(function() {
                           at: 'center center',
                       });
                     imageHandling.onReset();
+                    $(".disable__watermark").hide();
+                    $(".disable__interface").addClass("lang");
+                    $(".disable__interface").text(langData['loadwm'][$("#language_type").val()]);
+                    maxWidthBackground = $('.loaded__image').width();
                 });
-                
+
             }).change();// .change() в конце для того чтобы событие сработало при обновлении страницы
 
  };
@@ -83,8 +118,10 @@ $(function() {
                 var text= $('.download-watermark__text').val();
                 text = text.replace("C:\\fakepath\\", "");
                 $('.download-watermark__text').val(text);
-                
                 imageHandling.imageLoad();
+                $('.loaded__watermark').load(function() {
+                  $(".disable__interface").hide();
+                });
             }).change();// .change() в конце для того чтобы событие сработало при обновлении страницы
 
  };
@@ -96,18 +133,19 @@ $(function() {
     _change($(this));
  }
  previosClass = '';
-function _change($this){
+function _change($this) {
 
   item = $this.closest('.switch__link'),
   itemClass = item.attr('class'),
   view = item.attr("data-view"),
   views = $('#views'),
   prefix = 'position_',
-  classOfViewState = prefix + view; 
+  classOfViewState = prefix + view;
   if (previosClass == '') {
     previosClass = views.attr('class');
-  } views.attr('class', previosClass+ ' ' +classOfViewState);
-} 
+  }
+  views.attr('class', previosClass+ ' ' +classOfViewState);
+}
 
   switchTile = $('.switch__link_tile');
   switchSingle = $('.switch__link_single');
@@ -115,16 +153,33 @@ function _change($this){
   switchSingleActive = 'switch__link_single_active';
 
   switchTile.on('click', function(event) {
-    event.preventDefault();
-    if (!switchTile.hasClass(switchTileActive)) {
-      switchTile.addClass(switchTileActive);
-      switchSingle.removeClass(switchSingleActive);
-    }
+      saveSpinnerX = $("#spinnerX").val();
+      saveSpinnerY = $("#spinnerY").val();
+      // включаем режим замощения
+      event.preventDefault();
+      if (!switchTile.hasClass(switchTileActive)) {
+          switchTile.addClass(switchTileActive);
+          switchSingle.removeClass(switchSingleActive);
+      }
+      $("#switch_item_type").val("tile");
+      setTimeout(function(){
+        $('.watermark__tiling_box').css('opacity', $('.slider-result-hidden').val()*0.01);
+      },10);
   });
   switchSingle.on('click', function(event) {
-    event.preventDefault();
-    if (!switchSingle.hasClass(switchSingleActive)) {
-      switchSingle.addClass(switchSingleActive);
-      switchTile.removeClass(switchTileActive);
-    }
+      saveSpinnerXTile = $("#spinnerX").val();
+      saveSpinnerYTile = $("#spinnerY").val();
+      saveSpinnerHorTile = $("#spinnerHor").val();
+      saveSpinnerVerTile = $("#spinnerVert").val();
+      // включаем режим 9 зон
+      event.preventDefault();
+      if (!switchSingle.hasClass(switchSingleActive)) {
+          switchSingle.addClass(switchSingleActive);
+          switchTile.removeClass(switchTileActive);
+      }
+      $("#switch_item_type").val("single");
+      setTimeout(function(){
+        $('.loaded__watermark').css('opacity', $('.slider-result-hidden').val()*0.01);
+        imageHandling.setDrag();
+      },100);
   });

@@ -1,4 +1,5 @@
 app
+www
 .gulp-scss-cache
 node_modules
 dev/bower

@@ -42,3 +42,42 @@ ul{
 	margin-top: -40px;	
 	min-width: 960px;
 }
+
+#popupwin {
+	display: none;
+	width: 300px;
+	height: 100px;
+	background-color: white;
+	border-radius: 5px;
+	padding: 0 10px;
+
+	.close {
+		text-align: right;
+		color: red;
+		cursor: pointer;
+	}
+}
+
+.loaded__watermark,
+.watermark__box-img {
+  cursor: move;
+}
+
+.canvas-content__header,
+.canvas-sidebar__header,
+.settings-title-input,
+.settings-title {
+	white-space: nowrap;
+}
+
+.opacity_text,
+.position_text {
+	width:220px;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+
+.position_text {
+	width:160px;
+}
