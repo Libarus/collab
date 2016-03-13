@@ -37,7 +37,7 @@
 ```
 ## Разработчики
 	Антон Забелин - тимлид, PHP, сборка всего проекта
-	Катя Леурдо - JavaScript, , Jade, Sass
+	Катя Леурдо - JavaScript, Jade, Sass
 	Кирилл Терёхин - JavaScript, Jade, Sass
 	Александр Сырцов  - JavaScript, Jade, Sass
 	Виктор Плакида - верстка, JavaScript, Jade, Sass
