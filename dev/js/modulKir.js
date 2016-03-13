@@ -143,9 +143,6 @@ $(function(){
           verSpinChage($(this), this.value);
       });
 
-      $('.watermark__tiling_image').on('load',function(){
-        GeneralTiling();
-      });
 }
 
 
@@ -184,6 +181,7 @@ $('.switch__link').on('click', function(e) {
   if($(target).hasClass('switch__link_tile_active') && $('.loaded__image')){
       createMarkup();//меняю разметку
       GeneralTiling();
+      setTimeout(GeneralTiling,10);
       //con sole.log($('#spinnerVert').val());
   } else {
     var imageURL = $('#watermark__image_BG').attr('src');
