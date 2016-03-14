@@ -134,9 +134,13 @@
         containment: ".loaded__image",
         drag: function( event, ui ) {
 
+            var coors = {
+                          top : ui.position.top - relativePos.top,
+                          left : ui.position.left - relativePos.left
+                        }
 			      // ui.position.top = ui.position.top - relativePos.top;
             // ui.position.left = ui.position.left - relativePos.left;
-            changeInputs(ui.position);
+            changeInputs(coors);
         } 
     });
   }
